@@ -1,0 +1,25 @@
+#no28{
+    background: #ea0b0b -webkit-linear-gradient(left,#0e7cd9,#c8c4db 50%,#ff0 90%,#42bc17) no-repeat 0 0;
+    background-size:20% 100%; 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    height: 150px;
+    line-height: 150px;
+}
+#no28 {-webkit-animation: slideShine 4s linear infinite;animation: slideShine 4s linear infinite;}
+@-webkit-keyframes slideShine {
+    0% {
+         background-position: 0 0;
+       }
+    100% {
+         background-position: 100% 100%;
+     }
+}
+@keyframes slideShine {
+     0% {background-position: 0 0; }
+    100% {background-position: 100% 100%; }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第七题</title>
+    <script src="./seven.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        section {
+            width: 800px;
+            height: auto;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        .box {
+            width: 600px;
+            height: auto;
+            margin: 0 auto;
+            border: 2px solid orangered;
+            display: flex;
+        }
+        button{
+            width: 150px;
+            height: 50px;
+            font-size: 18px;
+            color: #333;
+            flex: 1;
+        }
+        input {
+            flex: 1;
+            border:none;
+            height:60px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <section>
+        1、页面上有一个按钮，点击能弹出一个对话框询问“请问你是女孩吗,”;如果选择确定，则显示“太好了～”，否则显示“没劲”
+        2、页面上有一个按钮，点击后能让网页的背景不停变色
+        3、页面上有一个按钮及文本框，在文本框中输入邮箱后，点击按钮能进行验证，要求不能为空，且必须包含@和.
+        4、页面上有一个按钮，点击后能在文本框内显示出当前系统时间，如下图所示
+    </section>
+    <div class="box">
+        <button class="btn1">询问框</button>
+        <button class="btn2">切换背景颜色</button>
+        <button class="btn3">验证邮箱</button>
+        <button class="btn4">显示当前系统时间</button>
+    </div>
+    <div class="box">
+        <input type="text" id="email">
+
+    </div>
+    <div class="box">
+        <input type="text" id="time">
+    </div>
+</body>
+
+</html>

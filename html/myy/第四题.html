@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第四题</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        section {
+            width: 800px;
+            height: auto;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+
+        #proSelect,
+        #citySelect {
+            width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        实现二级级联的
+        使用JavaScript中变量定义省份及对应的城市，应用Select标签对象
+        下拉菜单选中效果。也就是说，在省份下拉菜单中，选中一个省份时，在城市下拉菜单中出现对应城市选择内容。
+        1、 在打开页面时弹出一个确认对话框
+        2、 显示:“你确定继续浏览吗,”。如果用户点击确定，
+        则用alert显示信息“欢迎光临～”;若用户点击取消，则用alert显示信息“欢迎再来～”并使用window.close 关闭页面
+    </section>
+    <section>
+        <select id="proSelect">
+            <option>请选择省份</option>
+        </select>
+        <select id="citySelect">
+            <option>城市</option>
+        </select>
+    </section>
+    <script>
+        let city = [{ "江苏": ["南京", "苏州", "徐州", "南通", "淮安"] }, { "北京": ["北京"] }, { "上海": ["上海"] }];
+        let proSelect = document.getElementById("proSelect");
+        let citySelect = document.getElementById("citySelect");
+        city.map((value, index) => {
+            var optionP = document.createElement("option");
+            for (let key in value) {
+                optionP.innerText = key;
+                optionP.value = key;
+            }
+            proSelect.appendChild(optionP);
+        })
+        proSelect.onchange = function () {
+            //根据value值遍历城市数据
+            let currentP = this.value;
+            let dataId = (this.selectedIndex - 1);
+            if (dataId >= 0) {
+                let cityData = city[dataId][currentP];
+                citySelect.innerHTML = "";
+                cityData.map((value, index) => {
+                    var optionC = document.createElement("option");
+                    optionC.innerText = value;
+                    citySelect.appendChild(optionC);
+                })
+            } else {
+                citySelect.innerHTML = "";
+                var optionC = document.createElement("option");
+                optionC.innerText = "城市";
+                citySelect.appendChild(optionC);
+            }
+
+        }
+        var flag = window.confirm("你确定继续浏览吗");
+        if (flag) {
+            alert("欢迎光临～");
+        } else {
+            alert("欢迎再来～");
+            window.close();
+        }
+    </script>
+</body>
+
+</html>

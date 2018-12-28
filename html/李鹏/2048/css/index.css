@@ -1,0 +1,39 @@
+#stage {
+    position: relative;
+    width: 450px;
+    height: 450px;
+    margin: 20px auto 0;
+    padding: 10px 0 0 10px;
+    background: rgb(187,173,160);
+}
+#stage>.ordinary {
+    position: relative;
+    float: left;
+    width: 100px;
+    height: 100px;
+    background: rgb(204,192,179);
+    margin: 0 10px 10px 0;
+    font-size: 30px;
+}
+.num{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    color:black;
+    font-size: 30px;
+    text-align: center;
+    line-height: 100px;
+}
+
+#result{
+    font-size: 32px;
+}
+
+#money{
+    width: 100%;
+    height: 50px;
+    font-size: 32px;
+    line-height: 50px;
+    cursor:pointer;
+}

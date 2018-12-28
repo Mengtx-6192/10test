@@ -1,0 +1,42 @@
+#no2{
+    position: relative;
+    left:50px;
+    top:20px;
+    width: 200px;
+    height: 200px;
+    font-size: 32px;
+    vertical-align: center;
+    animation: ani 0.5s ease infinite;
+    animation-direction: alternate;
+    z-index:99999;
+}
+#no2::before,
+#no2::after{
+    content:"";
+    display:block;
+    position: absolute;
+    width: 80px;
+    height: 120px;
+    top: 40px;
+    background: rgb(241, 34, 34);
+    border-radius: 100px 100px 0 0;
+}
+#no2::before{
+    transform: rotateZ(-45deg);
+    left:67px;
+}
+#no2::after{
+    transform: rotateZ(45deg);
+    left:96px;
+}
+#no2 a{
+    text-decoration: none;
+}
+@keyframes ani{
+    form{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.2);
+    }
+}

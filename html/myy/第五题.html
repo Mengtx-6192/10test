@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第五题</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        section {
+            width: 800px;
+            height: auto;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+
+        #showTime {
+            width: 300px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0 auto;
+            border: 5px solid pink;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        1、 使用循环语句和document.write，依次以h1~h6的6级标题格式在页面中输出6行“欢迎 光临”。
+        2、 在页面中showtime的div中显示当前时间。格式如下:
+        ::。每隔一秒刷新一次。
+        提示:使用innerText/innerHTML。
+    </section>
+    <div id="showTime">显示当前时间</div>
+    <script>
+        var str = "";
+        for (var i = 1; i <= 6; i++) {
+            str += "<h" + i + ">欢迎 光临</h" + i + "><br>"
+        }
+        /**
+        显示当前时间
+        **/
+        function showTime() {
+            var showDom=document.getElementById("showTime");
+            var date = new Date();
+            var currentTime = date.getTime() / 1000;//秒
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+            seconds=seconds>9?seconds:"0"+seconds;
+            console.log(hours,minutes,seconds);
+            showDom.innerHTML=hours+":"+minutes+":"+seconds;
+        }
+        showTime();
+        setInterval(function(){
+            showTime();
+        },1000);
+        document.write(str);
+    </script>
+</body>
+
+</html>

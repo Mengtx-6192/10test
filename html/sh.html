@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 表盘 */
+        .clock {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            border-radius: 50%;
+            box-sizing: content-box;
+            border: 10px solid #ccc;
+        }
+        /* 刻度 */
+        .line {
+            position: absolute;
+            width: 10px;
+            height: 300px;
+            left: 50%;
+            top: 50%;
+            background-color: #ccc;
+        }
+        .line1 {
+            transform: translate(-50%, -50%) rotate(30deg);
+        }
+        .line2 {
+            transform: translate(-50%, -50%) rotate(60deg);
+        }
+        .line3 {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+        .line4 {
+            transform: translate(-50%, -50%) rotate(120deg);
+        }
+        .line5 {
+            transform: translate(-50%, -50%) rotate(150deg);
+        }
+        .line6 {
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+        /* 遮罩层 */
+        .mask{
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            background-color: #fff;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 50%;
+        }
+        /* 指针 时针 */
+        .pointer1{
+            position: absolute;
+            width: 10px;
+            height: 60px;
+            background-color: red;          
+            left: 50%;
+            bottom: 50%;
+            transform: translate(-50%,0%);
+            transform-origin: center bottom;
+            animation: clockMove 43200 linear infinite;
+        }
+        /* 指针 分针 */
+        .pointer2{         
+            position: absolute;
+            width: 8px;
+            height: 70px;
+            background-color: green;          
+            left: 50%;
+            bottom: 50%;
+            transform: translate(-50%,0%);
+            transform-origin: center bottom;
+            animation: clockMove 3600s linear infinite;
+        }
+        /* 指针 秒针 */
+        .pointer3{
+            position: absolute;
+            width: 6px;
+            height: 80px;
+            background-color: black;          
+            left: 50%;
+            bottom: 50%;
+            transform: translate(-50%,0%);
+            transform-origin: center bottom;
+            animation: clockMove 60s infinite steps(60);
+        }
+        /* 圆心 */
+        .center{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            background-color: #12147a;
+
+        }
+        /* 动画 */
+        @keyframes clockMove{
+            from{
+                transform: rotate(0deg)
+            }
+            to{
+                transform: rotate(360deg)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+        <div class="line line3"></div>
+        <div class="line line4"></div>
+        <div class="line line5"></div>
+        <div class="line line6"></div>
+        <div class="mask"></div>
+        <div class="pointer1"></div>    <!-- 时针 -->
+        <div class="pointer2"></div>    <!-- 分针 -->
+        <div class="pointer3"></div>    <!-- 秒针 -->
+        <div class="center"></div>      <!-- 圆心 -->
+    </div>
+</body>
+
+</html>

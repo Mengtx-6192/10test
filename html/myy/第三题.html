@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第三题</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        section {
+            width: 800px;
+            height: auto;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        函数调用，建立两个函数，一个函数是中学二次函数表达式的计算方法，另一个函数是给定任意的20个x值，调用前一个函数计算y对应的值，并使用方式输出20个计算结果。 （就是写两个函数，一个函数调用另一个函数）
+        打印9*9乘法表
+    </section>
+    <script>
+
+        function getPower(num1, num2) {
+            return Math.pow(num1, num2)
+        }
+        function getTotal() {
+            let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+            for (let i = 0; i < arr.length; i++) {
+                let y = getPower(arr[i], 2);
+                console.log(y);
+            }
+        }
+        getTotal();
+        for (var i = 1; i <= 9; i++) {
+            var str = "";
+            for (var j = 1; j <= i; j++) {
+                str += i + "*" + j + "=" + i * j + "\t";
+            }
+            str += "\n";
+            console.log(str);
+        }
+    </script>
+</body>
+
+</html>

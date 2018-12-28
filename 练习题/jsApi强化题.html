@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #topBar {
+            
+            padding: 0 0 0 500px;
+            /* width: 100%; */
+            /* margin: 0 auto; */
+            height: 100px;
+            line-height: 100px;
+        }
+        #topBar span {
+            position: relative;
+            display: inline-block;
+            height: 25px;
+            width: 80px;
+            line-height: 25px;
+            text-align: center;
+            background: gainsboro;
+            margin-right: 35px;
+        }
+        #topBar span::after {
+            cursor: pointer;
+            content: 'X';
+            position: absolute;
+            top: 0;
+            right: -20px;
+            width: 20px;
+            background: gainsboro;
+        }
+        table {
+            margin: 10px auto;
+            width: 800px;
+            border: 1px solid;
+        }
+
+        th,
+        td {
+            border: 1px solid red;
+            text-align: center;
+        }
+        #page {
+            text-align: center;
+        }
+        #page span {
+            display: inline-block;
+            width: 135px;
+            height: 20px;
+            line-height: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="topBar"></div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id="checkbox-all"><span>全选</span>
+                </th>
+                <th>名称</th>
+                <th>编号</th>
+                <th>分类</th>
+                <th>描述</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+<script>
+    let data = [
+        { name:'冰箱', id:'bx001', catagory:'家电', desc:'可以冷藏东西的东西' },
+        { name:'冰柜', id:'bx002', catagory:'家电', desc:'可以冷藏东西的东西' },
+        { name:'空调', id:'kt001', catagory:'家电', desc:'夏天必备' },
+        { name:'电视', id:'ds001', catagory:'家电', desc:'可以看小电影' },
+        { name:'电脑', id:'dn001', catagory:'家电', desc:'网上冲浪' },
+        { name:'卷纸', id:'jz001', catagory:'生活用品', desc:'卷起来的纸' },
+        { name:'小刀', id:'xd001', catagory:'生活用品', desc:'不是电动车的那个小刀' },
+        { name:'洗衣液', id:'xyy001', catagory:'日常用品', desc:'洗衣服用的，听说和香水一样哦' },
+        { name:'麦片', id:'mp001', catagory:'食物', desc:'可以吃的东东' },
+        { name:'82年红茶', id:'hc001', catagory:'饮料', desc:'听说只有帅气的人才能天天喝' },
+    ]
+
+    // 1.  将data中数据添加到tbody中
+
+    // 2.   完成全选功能
+
+    // 3.   下面的input的checkbx控制全选
+
+    // 4.   将选择的那一行的名称，添加到topBar里
+
+    // 5.   对topBar里的span增加删除功能
+
+    // 6.   删除span会将页面上的元素删掉，并将对应的input的checkbox置为false。
+</script>
+</html>
