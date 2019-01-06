@@ -17,9 +17,9 @@
     var show = document.querySelector('div');
     setInterval(function () {
         var time = new Date();
-        var hour = time.getHours()>10?time.getHours():'0'+time.getHours();
-        var minute = time.getMinutes()>10?time.getMinutes():'0'+time.getMinutes();
-        var second = time.getSeconds()>10?time.getSeconds():'0'+time.getSeconds();
+        var hour = time.getHours()>=10?time.getHours():'0'+time.getHours();
+        var minute = time.getMinutes()>=10?time.getMinutes():'0'+time.getMinutes();
+        var second = time.getSeconds()>=10?time.getSeconds():'0'+time.getSeconds();
         show.innerHTML = '现在是' + hour + ':' + minute + ':' + second;
 
     }, 1000);
