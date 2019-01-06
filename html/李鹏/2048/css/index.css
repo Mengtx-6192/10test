@@ -41,9 +41,10 @@
     line-height: 450px;
 }
 #stage>.winner::before{
-    content:"";
-    background-image: url(../images/76ce30ad4374872e266f3e4a602509120a11f2e82419ab-v0pYwJ_fw658.gif);
-    background-size: 100% 100%;
+    content:"丝锅以";
+    /* background-image: url(../images/76ce30ad4374872e266f3e4a602509120a11f2e82419ab-v0pYwJ_fw658.gif); */
+    /* background-size: 100% 100%; */
+    color:rgb(114, 93, 93);
 }
 #stage>.stop::before{
     content:"辣鸡";

@@ -57,7 +57,8 @@ function createspan() {
                     this.remove();
                     for(var i=0;i<goods.length;i++){
                         if(goods[i].name===t){
-                            checks[i].checked=false;
+                            // checks[i].checked=false;
+                            checks[i].click();
                         }
                     }
                 }

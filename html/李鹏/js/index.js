@@ -253,12 +253,15 @@ $(function () {
         var p = document.querySelector("#province");
         var c = document.querySelector("#city");
         var city = {};
+        city["请选择"]=[];
         city["北京"] = ["一环", "二环", "三环", "四环", "五环", "啊 啊~五环",];
         p.onchange = function () {
-            if (this.value === "0") {
-                return;
-            }
+            /* if (this.value === "0") {
 
+                return;
+            } */
+            $(c).empty();
+            $("<option>请选择</option>").appendTo($(c));
 
             for (var i = 0; i < city[this.value].length; i++) {
                 $("<option value=\"" + city[this.value][i] + "\">" + city[this.value][i] + "</option>").appendTo($(c));
