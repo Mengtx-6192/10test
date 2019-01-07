@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #topBar {
+            
+            padding: 0 0 0 300px;
+            width: 100%;
+            /* margin: 0 auto; */
+            height: 100px;
+            line-height: 100px;
+        }
+        #topBar span {
+            position: relative;
+            display: inline-block;
+            height: 25px;
+            width: 80px;
+            line-height: 25px;
+            text-align: center;
+            background: gainsboro;
+            margin-right: 35px;
+        }
+        #topBar span::after {
+            cursor: pointer;
+            content: 'X';
+            position: absolute;
+            top: 0;
+            right: -20px;
+            width: 20px;
+            background: gainsboro;
+        }
+        table {
+            margin: 10px auto;
+            width: 800px;
+            border: 1px solid;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid red;
+            text-align: center;
+        }
+        #page {
+            text-align: center;
+        }
+        #page span {
+            display: inline-block;
+            width: 135px;
+            height: 20px;
+            line-height: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="topBar"></div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id="checkbox-all"><span>全选</span>
+                </th>
+                <th>名称</th>
+                <th>编号</th>
+                <th>分类</th>
+                <th>描述</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+<script>
+    // 1.  将data中数据添加到tbody中
+    // 2.   完成全选功能
+    // 3.   下面的input的checkbx控制全选
+    // 4.   将选择的那一行的名称，添加到topBar里
+    // 5.   对topBar里的span增加删除功能
+    // 6.   删除span会将页面上的元素删掉，并将对应的input的checkbox置为false。
+    let data = [
+        { name: '冰箱', id: 'bx001', catagory: '家电', desc: '可以冷藏东西的东西' },
+        { name: '冰柜', id: 'bx002', catagory: '家电', desc: '可以冷藏东西的东西' },
+        { name: '空调', id: 'kt001', catagory: '家电', desc: '夏天必备' },
+        { name: '电视', id: 'ds001', catagory: '家电', desc: '可以看小电影' },
+        { name: '电脑', id: 'dn001', catagory: '家电', desc: '网上冲浪' },
+        { name: '卷纸', id: 'jz001', catagory: '生活用品', desc: '卷起来的纸' },
+        { name: '小刀', id: 'xd001', catagory: '生活用品', desc: '不是电动车的那个小刀' },
+        { name: '洗衣液', id: 'xyy001', catagory: '日常用品', desc: '洗衣服用的，听说和香水一样哦' },
+        { name: '麦片', id: 'mp001', catagory: '食物', desc: '可以吃的东东' },
+        { name: '82年红茶', id: 'hc001', catagory: '饮料', desc: '听说只有帅气的人才能天天喝' },
+    ]
+    var tbody = document.querySelector('tbody');
+    var topBar = document.querySelector("#topBar")
+    for (let i = 0; i < data.length; i++) {
+        var tr = document.createElement('tr');
+        tr.setAttribute('index', i);
+        tbody.appendChild(tr);
+        var td = document.createElement('td');
+        td.innerHTML = '<input type="checkbox">';
+        tr.appendChild(td);
+        for (var k in data[i]) {
+            var td = document.createElement('td');
+            td.innerHTML = data[i][k];
+            tr.appendChild(td)
+        }
+    }
+    var inputs = tbody.querySelectorAll('input');
+    var checkbox_all = document.querySelector("#checkbox-all");
+    checkbox_all.onclick = function () {
+        for (let i = 0; i < inputs.length; i++) {
+            if (this.checked) {
+                inputs[i].checked = true;
+                var span = document.createElement("span");
+                span.innerHTML = data[i].name;
+                span.setAttribute("indexs",i)
+                topBar.appendChild(span);
+                span.onclick = function () {
+                    topBar.removeChild(this);
+                    inputs[i].checked = false;
+                    checkbox_all.checked = false;
+                }
+            } else {
+                for (let j = 0; j <inputs.length; j++) {
+                    if(topBar.children.length===0) {
+                        return ;
+                    }
+                    topBar.removeChild(topBar.children[0]);
+                    inputs[j].checked = false;
+                }
+            }
+        }
+    }
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].onclick = function () {
+                var ischeck = true;
+                for (let i = 0; i < inputs.length; i++) {
+                    if (!inputs[i].checked) {
+                        ischeck = false;
+                    }
+                }
+                checkbox_all.checked = ischeck;
+                if (this.checked) {
+                    var index = parseInt(this.parentNode.parentNode.getAttribute('index'));
+                    var span = document.createElement("span");
+                    span.innerHTML = data[index].name;
+                    span.setAttribute("indexs",i)
+                    topBar.appendChild(span);
+                    span.onclick = function () {
+                        topBar.removeChild(this);
+                        inputs[index].checked = false;
+                    }
+                } else {
+                    for (let j = 0; j < topBar.children.length; j++) {
+                        var indexs = parseInt(topBar.children[j].getAttribute('indexs'));
+                        if (indexs===i) {
+                            topBar.removeChild(topBar.children[j]) 
+                        }
+                    }
+                   
+                }
+            }
+    }
+</script>
+
+</html>

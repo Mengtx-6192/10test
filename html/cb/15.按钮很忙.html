@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .girl {
+            width: 400px;
+            height: 200px;
+            background: #666;
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+        }
+        .girl h2{
+            text-align: center;
+            color: red;
+            margin-top: 20px;
+        }
+        .girl span{
+            position: absolute;
+            bottom: 30px;
+            width: 50px;
+            height: 20px;
+            border:1px solid red;
+            color: #fff;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+        .girl span:nth-of-type(1){
+            left: 40px;
+        }
+        .girl span:nth-of-type(2){
+            right: 40px;
+        }
+    
+    </style>
+</head>
+
+<body>
+    <input type="button" value="点我弹框"><br><br><br>
+    <input type="button" value="关灯"><br><br><br>
+    <form action="">
+        <input type="email" placeholder="请输入邮箱" id="email">
+        <input type="submit" value="确定" id="submit">
+    </form>
+    <br><br><br>
+    <input type="text" placeholder="点击按钮显示时间" id="nowTime">
+    <input type="button" value="点我" id="clickTime">
+    <div class="girl">
+        <h2>请问你是女孩吗</h2>
+        <span>是</span>
+        <span>否</span>
+    </div>
+    <script>
+        /* 六
+        1、页面上有一个按钮，点击能弹出一个对话框询问“请问你是女孩吗, ”; 如果选择确定，则显示“太好了～”，否则显示“没劲”
+        2、页面上有一个按钮，点击后能让网页的背景不停变色
+        3、页面上有一个按钮及文本框，在文本框中输入邮箱后，点击按钮能进行验证，要求不能为空，且必须包含@和.
+        4、页面上有一个按钮，点击后能在文本框内显示出当前系统时间，如下图所示 */
+        var box = document.querySelector('input:nth-of-type(1)');
+        var girl = document.querySelector('.girl')
+        var yes = document.querySelector('span:nth-of-type(1)');
+        var no = document.querySelector('span:nth-of-type(2)');
+        var light = document.querySelector('input:nth-of-type(2)');
+        var email = document.querySelector('#email');
+        var submit = document.getElementById('submit');
+        box.onclick = function () {
+            girl.style.display = 'block';
+            yes.onclick = function () {
+                alert('太好了')
+                girl.style.display = 'none';
+            }
+            no.onclick = function () {
+                alert('没劲')
+                girl.style.display = 'none';
+            }
+        }
+
+        light.onclick = function () {
+            if (this.value == '关灯') {
+                document.body.style.backgroundColor = 'black';
+                this.value = '开灯';
+            } else if (this.value == '开灯') {
+                document.body.style.backgroundColor = '';
+                this.value = '关灯'
+            }
+
+        }
+
+        var curTime = new Date().toLocaleString();
+        var clickTime = document.querySelector("#clickTime");
+        var nowTime = document.querySelector("#nowTime");
+        clickTime.onclick = function () {
+            nowTime.value = curTime;
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>加强</title>
+    <style>
+        #topBar {
+            
+            padding: 0 0 0 100px;
+            /* width: 100%; */
+            /* margin: 0 auto; */
+            height: 100px;
+            line-height: 100px;
+        }
+        #topBar span {
+            position: relative;
+            display: inline-block;
+            height: 25px;
+            width: 80px;
+            line-height: 25px;
+            text-align: center;
+            background: gainsboro;
+            margin-right: 35px;
+            pointer-events: none;
+        }
+        #topBar span::after {
+            cursor: pointer;
+            content: 'X';
+            position: absolute;
+            top: 0;
+            right: -20px;
+            width: 20px;
+            background: gainsboro;
+            pointer-events: all;
+        }
+        table {
+            margin: 10px auto;
+            width: 800px;
+            border: 1px solid;
+        }
+
+        th,
+        td {
+            border: 1px solid red;
+            text-align: center;
+        }
+        #page {
+            text-align: center;
+        }
+        #page span {
+            display: inline-block;
+            width: 135px;
+            height: 20px;
+            line-height: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="topBar"></div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id="checkbox-all"><span>全选</span>
+                </th>
+                <th>名称</th>
+                <th>编号</th>
+                <th>分类</th>
+                <th>描述</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+<script>
+    let data = [
+        { name: '冰箱', id: 'bx001', catagory: '家电', desc: '可以冷藏东西的东西' },
+        { name: '冰柜', id: 'bx002', catagory: '家电', desc: '可以冷藏东西的东西' },
+        { name: '空调', id: 'kt001', catagory: '家电', desc: '夏天必备' },
+        { name: '电视', id: 'ds001', catagory: '家电', desc: '可以看小电影' },
+        { name: '电脑', id: 'dn001', catagory: '家电', desc: '网上冲浪' },
+        { name: '卷纸', id: 'jz001', catagory: '生活用品', desc: '卷起来的纸' },
+        { name: '小刀', id: 'xd001', catagory: '生活用品', desc: '不是电动车的那个小刀' },
+        { name: '洗衣液', id: 'xyy001', catagory: '日常用品', desc: '洗衣服用的，听说和香水一样哦' },
+        { name: '麦片', id: 'mp001', catagory: '食物', desc: '可以吃的东东' },
+        { name: '82年红茶', id: 'hc001', catagory: '饮料', desc: '听说只有帅气的人才能天天喝' },
+    ]
+    // 1.  将data中数据添加到tbody中
+    var tbody = document.getElementsByTagName("tbody")[0];
+    for (let i = 0; i < data.length; i++) {
+        var tr = document.createElement("tr");
+        tbody.appendChild(tr);
+        var obj = data[i];
+        var th = document.createElement("th");
+        tr.appendChild(th);
+        var checkbox = document.createElement("input");
+        th.appendChild(checkbox);
+        checkbox.type = "checkbox";
+        checkbox.id = "checkbox" + (i + 1)
+        for (var k in obj) {
+            td = document.createElement("td");
+            tr.appendChild(td);
+            td.innerText = obj[k];
+        }
+    }
+    // 2.   完成全选功能
+    // 3.   下面的input的checkbox控制全选
+    // 4.   将选择的那一行的名称，添加到topBar里
+    var checkboxAll = document.getElementById("checkbox-all");
+    var input = tbody.getElementsByTagName("input");
+    var topBar = document.getElementById("topBar");
+    checkboxAll.onclick = function () {
+        for (let i = 0; i < input.length; i++) {
+            if (!input[i].checked) {
+                input[i].checked = this.checked;
+                var span = document.createElement("span");
+                topBar.appendChild(span);
+                span.innerText = input[i].parentNode.nextElementSibling.innerText;
+                span.onclick = function () {   // 5.   对topBar里的span增加删除功能
+                    topBar.removeChild(this);
+                    that = this;
+                    shanchu(that);
+                }
+            }
+        }
+        if (!this.checked) {
+            for (let i = 0; i < input.length; i++) {
+                input[i].checked = this.checked;
+            }
+            topBar.innerHTML = '';
+        }
+    }
+    child();
+    function child() {
+        for (let i = 0; i < input.length; i++) {
+            input[i].onclick = function () {
+                if (input[i].checked) {
+                    var span = document.createElement("span");
+                    topBar.appendChild(span);
+                    span.innerText = this.parentNode.nextElementSibling.innerText;
+                    span.onclick = function () {  // 5.   对topBar里的span增加删除功能
+                        topBar.removeChild(this);
+                        that = this;
+                        shanchu(that);
+                    }
+                } else {
+                    for (let i = 0; i < topBar.children.length; i++) {
+                        if (topBar.children[i].innerText == this.parentNode.nextElementSibling.innerText) {
+                            topBar.removeChild(topBar.children[i]);
+                        }
+                    }
+                }
+                var flag = true;
+                for (let j = 0; j < input.length; j++) {
+                    if (input[j].checked != true) {
+                        flag = false;
+                        break;
+                    }
+                }
+                checkboxAll.checked = flag;
+            }
+        }
+    }
+    // 6.   删除span会将页面上的元素删掉，并将对应的input的checkbox置为false。
+    function shanchu(that) {
+        for (let i = 0; i < input.length; i++) {
+            if (that.innerText == input[i].parentNode.nextElementSibling.innerText) {
+                input[i].checked = false;
+            }
+        }
+        checkboxAll.checked=false;
+    }
+</script>
+
+</html>

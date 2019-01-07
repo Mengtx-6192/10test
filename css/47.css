@@ -1,0 +1,12 @@
+#no47 {
+    display: block;
+    border: .1px solid #ccc;
+    background-color: #b41527;
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+}
+#no47:after {
+    content: " - ";
+    color: #fff;
+}

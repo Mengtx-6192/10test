@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1{
+        width: 200px;
+        height: 100px;
+        border: 1px solid #000;
+        text-align: center;
+        padding-top: 50px;
+        margin: 100px auto;
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- 页面上有一个按钮，点击能弹出一个对话框询问“请问你是女孩吗,”;如果选择确定，则显示“太好了～”，否则显示“没劲” 
+        页面上有一个按钮，点击后能让网页的背景不停变色 
+        页面上有一个按钮及文本框，在文本框中输入邮箱后，点击按钮能进行验证，要求不能为空，且必须包含@和. 
+        页面上有一个按钮，点击后能在文本框内显示出当前系统时间，如下图所示  -->
+    <input type="button" value="性别" id="sex">
+    <div  class="box1">
+        你是女孩吗？ <br><br>
+        <input type="button" value="是的">
+        <input type="button" value="不是的">
+    </div>
+    <input type="button" value="变换背景色" id="bgc">
+    
+</body>
+<script>
+var sex = document.querySelector('#sex');
+var box1 = document.querySelector('.box1');
+sex.onclick=function(){
+    box1.style.display = 'block';
+    var ins = box1.querySelectorAll('input');
+    for(var i = 0;i<ins.length;i++){
+        ins[i].onclick=function(){
+            if(this.value == '是的'){
+                box1.style.display = 'none';
+                // alert('太好了')
+                confirm('太好了')
+            }else{
+                box1.style.display = 'none';
+                alert('没劲')
+            }
+        }
+    }
+}
+var bgc = document.querySelector('#bgc');
+bgc.onclick=function(){
+    alert('5秒后结束背景色切换')
+    var timer;
+    timer = setInterval(function(){
+document.body.style.backgroundColor='rgb('+Math.floor(Math.random()*255)+','
+                     +Math.floor(Math.random()*255)+','
+                     +Math.floor(Math.random()*255)+')';
+    },500);
+    setTimeout(function(){
+        clearInterval(timer);
+        document.body.style.backgroundColor='' ; 
+    },5000) 
+}   
+
+</script>
+</html>

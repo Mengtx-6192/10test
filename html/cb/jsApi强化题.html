@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./jquery-1.12.2.js"></script>
+    <script>
+        $(function () {
+            var arr = [];
+            for (var i = 0; i < data.length; i++) {
+                arr.push($("<tr> <td> <input type='checkbox'> </td> <td>" + data[i].name + "</td> <td>" + data[i].id + "</td> <td>" + data[i].catagory + "</td><td>" + data[i].desc + "</td> </tr >"))
+            }
+            $("tbody").html(arr);
+            var checkboxall = document.querySelector("#checkbox-all");
+            var checkbox = document.querySelectorAll("tbody input");
+            checkboxall.onclick = function () {
+                for (var i = 0; i < checkbox.length; i++) {
+                    checkbox[i].checked = this.checked;
+                    //点击全选，判断生成或者删除全部商品在topBar中
+                    if (checkboxall.checked) {
+                        $("<span>" + data[i].name + "</span>").appendTo($("#topBar"))
+                    } else {
+                        $("#topBar span").remove();
+                    }
+                }
+                getSpan();
+            }
+            for (var i = 0; i < checkbox.length; i++) {
+                $(checkbox[i]).attr("index", i);//给每个复选框注册一个自定义索引值
+                checkbox[i].onclick = function () {
+                    var flag = true;
+                    for (var j = 0; j < checkbox.length; j++) {
+                        if (!checkbox[j].checked) {
+                            flag = false;
+                            checkboxall.checked = flag;
+                        }
+                    }
+                    checkboxall.checked = flag;
+                    var index = $(this).attr("index");//获取当前的索引值
+                    // console.log(index);
+                    //动态添加到topBar中,如果勾选则创建span，不勾选删除span
+                    if (this.checked) {
+                        $("<span>" + data[index].name + "</span>").appendTo($("#topBar"))
+                    } else if (!this.checked) {
+                        // 获取当前tr行中的名称部分
+                        var checkContent = this.parentNode.parentNode.children[1].innerText;
+                        var spanContent = $("#topBar").find("span");
+                        spanContent.each(function (index, ele) {
+                            if (ele.innerText == checkContent) {
+                                $(this).remove();
+                            }
+                        })
+                    }
+                    // console.log(span)
+                    /* for (var k = 0; k < span.length; k++) {
+                        //获取span数组中对应的content
+                        var spanAfter = window.getComputedStyle(span[k], ":after");
+                        // console.log(spanAfter.content)
+                        spanAfter.content.onclick = function () {
+                            console.log("111");//伪元素不属于dom节点，无法绑定事件。pass
+                            span[k].removeChild();
+                        }
+                    } */
+                    getSpan();
+                }
+            }
+            //封装span的点击事件
+            function getSpan() {
+                var span = document.querySelectorAll("#topBar span");//获取创建的span元素
+                for (var k = 0; k < span.length; k++) {
+                    span[k].onclick = spanRemo;
+                    function spanRemo() {
+                        this.remove();//点击移除，自杀
+                        var curele = this.innerText;//获取当前span的文本内容
+                        var trs = $("tbody tr");//获取所有的tr
+                        trs.each(function (index, ele) {
+                            //如果所有的tr中的第2个td里的文本内容和当前span文本内容一致，就找到当前一致的tr其中的input复选框取消勾选
+                            if (ele.children[1].innerText == curele) {
+                                //    console.log($(this))
+                                $(this).find("input").prop("checked", false);
+                                checkboxall.checked = false;//取消全选按钮的勾选
+                            }
+                        })
+                    }
+                }
+            }
+        })
+    </script>
+    <title>Document</title>
+    <style>
+        #topBar {
+            
+            padding: 0 0 0 500px;
+            /* width: 100%; */
+            /* margin: 0 auto; */
+            height: 100px;
+            line-height: 50px;
+        }
+        #topBar span {
+            position: relative;
+            display: inline-block;
+            height: 25px;
+            width: 80px;
+            line-height: 25px;
+            text-align: center;
+            background: gainsboro;
+            margin-right: 35px;
+        }
+        #topBar span::after {
+            cursor: pointer;
+            content: 'X';
+            position: absolute;
+            top: 0;
+            right: -20px;
+            width: 20px;
+            background: gainsboro;
+        }
+        table {
+            margin: 10px auto;
+            width: 800px;
+            border: 1px solid;
+        }
+
+        th,
+        td {
+            border: 1px solid red;
+            text-align: center;
+        }
+        #page {
+            text-align: center;
+        }
+        #page span {
+            display: inline-block;
+            width: 135px;
+            height: 20px;
+            line-height: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="topBar"></div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id="checkbox-all"><span>全选</span>
+                </th>
+                <th>名称</th>
+                <th>编号</th>
+                <th>分类</th>
+                <th>描述</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+<script>
+    let data = [
+        { name: '冰箱', id: 'bx001', catagory: '家电', desc: '可以冷藏东西的东西' },
+        { name: '冰柜', id: 'bx002', catagory: '家电', desc: '可以冷藏东西的东西' },
+        { name: '空调', id: 'kt001', catagory: '家电', desc: '夏天必备' },
+        { name: '电视', id: 'ds001', catagory: '家电', desc: '可以看小电影' },
+        { name: '电脑', id: 'dn001', catagory: '家电', desc: '网上冲浪' },
+        { name: '卷纸', id: 'jz001', catagory: '生活用品', desc: '卷起来的纸' },
+        { name: '小刀', id: 'xd001', catagory: '生活用品', desc: '不是电动车的那个小刀' },
+        { name: '洗衣液', id: 'xyy001', catagory: '日常用品', desc: '洗衣服用的，听说和香水一样哦' },
+        { name: '麦片', id: 'mp001', catagory: '食物', desc: '可以吃的东东' },
+        { name: '82年红茶', id: 'hc001', catagory: '饮料', desc: '听说只有帅气的人才能天天喝' },
+    ]
+
+    // 1.  将data中数据添加到tbody中
+
+
+    // 2.   完成全选功能
+
+    // 3.   下面的input的checkbx控制全选
+
+    // 4.   将选择的那一行的名称，添加到topBar里
+
+    // 5.   对topBar里的span增加删除功能
+
+    // 6.   删除span会将页面上的元素删掉，并将对应的input的checkbox置为false。
+</script>
+
+</html>

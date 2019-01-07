@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //         一、 给定一个字符串例如:
+        // “abaasdffggghhjjkkgfddsssss3444343”;问题如下: 
+        // 1、 字符串的字节长度 
+        // 2、 取出指定位置的字符，如:0,3,5,9等 
+        // 3、 查找指定字符是否在以上字符串中存在，如:i，c ，b等 
+        // 4、 替换指定的字符，如:g替换为22,ss替换为b等操作方法 
+        // 5、 截取指定开始位置到结束位置的字符串，如:取得1-5的字符串 
+        // 6、 找出以上字符串中出现次数最多的字符和出现的次数 
+        // 7、 遍历字符串，并将遍历出的字符两头添加符号“@”输出至当前的文档页面。 
+
+        onload = function () {
+            var str = 'abaasdffggghhjjkkgfddsssss3444343';
+
+
+
+            console.log('1-\t' + str.length);
+
+
+
+            console.log('2-\t' + str.charAt(0), str.charAt(3), str.charAt(5), str.charAt(9));
+
+
+
+            tarArr = ['i', 'c', 'b'];
+            tarArr.forEach(function (item) {
+                var i = str.indexOf(item);
+                var iArr = [];
+                while (i !== -1) {
+                    iArr.push(i++);
+                    var i = str.indexOf(item, i);
+                }
+                console.log('3-\t' + item + '索引:' + (iArr.length ? iArr.join() : '不存在'));
+            })
+
+
+
+            var tar = [['g', '22'], ['ss', 'b']];
+            tar.forEach(function (item) {
+                while (str.indexOf(item[0]) !== -1) {
+                    str = str.replace(item[0], item[1]);
+                }
+                console.log('4-\t' + '替换' + item[0] + ': ' + str);
+            })
+
+
+
+
+            var str = 'abaasdffggghhjjkkgfddsssss3444343';
+            console.log('5-\t' + str.substr(1, 5));
+
+
+
+            var arr = str.split('');
+            var store = {};
+            arr.forEach(function (item) {
+                store[item] ? store[item]++ : store[item] = 1;
+            })
+            var max = 0;
+            var mostChar = '';
+            for (var k in store) {
+                if (max < store[k]) {
+                    mostChar = k;
+                    max = store[k];
+                }
+            }
+            console.log('6-\t' + '最多字符及次数：' + mostChar + ' ' + store[mostChar]);
+
+
+
+            var arr = str.split('');
+            str = arr.join('@\t@');
+            str = '@' + str + '@';
+            console.log('7-\t' + str);
+            var str1='<a href="../../test.html#no47">返回test.html</a><br><a href="../zr.html">返回zr.html</a><br>';
+            document.write(str1+str);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

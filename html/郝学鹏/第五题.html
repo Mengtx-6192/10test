@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id=showtime>显示当前时间</div>
+</body>
+<script>
+    var str = '';
+    for (var i = 1; i < 7; i++) {
+        str += '<h' + i + '>欢迎光临</h' + i + '>'
+    }
+    document.write(str)
+
+
+
+    // showtime.innerHTML="hours + '<br>' + minute + '<br>' + seconds"
+
+
+    function getTime() {
+
+        var showtime=document.getElementById('showtime');
+
+        var data = new Date();
+        var hours = data.getHours();
+        hours=hours>9?hours:"0"+hours;
+        var minute = data.getMinutes();
+        minute=minute>9?minute:"0"+minute;
+        var seconds = data.getSeconds();
+        seconds=seconds>9?seconds:"0"+seconds;
+
+     return  showtime.innerHTML=hours + ':' + minute + ':' + seconds
+        // console.log(hours + '<br>' + minute + '<br>' + seconds)
+
+    }
+    
+
+    setInterval(function(){
+        getTime()
+
+    },1000)
+
+
+</script>
+
+
+</html>

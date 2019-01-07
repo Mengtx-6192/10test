@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./jquery-1.12.2.js"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <select name="" id="province">
+        <option value="">江苏省</option>
+        <option value="">浙江省</option>
+        <option value="">安徽省</option>
+        <option value="">广东省</option>
+        <option value="">湖南省</option>
+    </select>
+    <select name="" id="city">
+        <option value="">南京市</option>
+        <option value="">杭州市</option>
+        <option value="">合肥市</option>
+        <option value="">广州市</option>
+        <option value="">长沙市</option>
+    </select>
+
+    <script>
+        /* 三、实现二级级联的
+        使用JavaScript中变量定义省份及对应的城市，应用Select标签对象
+        下拉菜单选中效果。也就是说，在省份下拉菜单中，选中一个省份时，
+        在城市下拉菜单中出现对应城市选择内容
+ */
+        var province = document.getElementById("province");
+        var city = document.getElementById("city");
+        province.onchange = function () {
+            for (var i = 0; i < province.children.length; i++) {
+                if (province.children[i].selected) {
+                    city.children[i].selected = true;
+                }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

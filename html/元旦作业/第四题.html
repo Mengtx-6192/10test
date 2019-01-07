@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        第四题、实现二级级联的 
+        使用JavaScript中变量定义省份及对应的城市，应用Select标签对象
+        下拉菜单选中效果。也就是说，在省份下拉菜单中，选中一个省份时，在城市下拉菜单中出现对应城市选择内容。
+         </pre>
+       
+         <select name="province" id="select">
+                 <option value="南京">南京</option>
+                 <option value="北京">北京</option>
+                 <option value="上海">上海</option>
+                 <option value="广东">广东</option>
+             </select>
+        
+         <div>
+                 <select name="city" id="jiang">
+                     <option value="南京">南京</option>
+                     <option value="南京">南京</option>
+                     <option value="南京">南京</option>
+                     <option value="南京">南京</option>
+                 </select>
+                 <select name="city" id="bei">
+                     <option value="北京">北京</option>
+                     <option value="北京">北京</option>
+                     <option value="北京">北京</option>
+                     <option value="北京">北京</option>
+                 </select>
+                 <select name="city" id="shang">
+                     <option value="上海">上海</option>
+                     <option value="上海">上海</option>
+                     <option value="上海">上海</option>
+                     <option value="上海">上海</option>
+                 </select>
+                 <select name="city" id="zhe">
+                     <option value="广东">广东</option>
+                     <option value="广东">广东</option>
+                     <option value="广东">广东</option>
+                     <option value="广东">广东</option>
+                 </select>
+             </div>
+     </body>
+     <script>
+     var select = document.getElementById("select");
+          var box = document.getElementsByTagName("div")[0];
+          box.children[0].style.display = "block";
+          function getOp() {
+              for (var i = 0; i < box.children.length; i++) {
+                  box.children[i].style.display = "none";
+              }
+          }
+          getOp();
+          select.oninput = function () { 
+              switch (select.value) {
+                  case "南京":
+                  getOp();
+                      box.children[0].style.display = "block";
+                      break;
+                  case "北京":
+                  getOp();
+                      box.children[1].style.display = "block";
+                      break;
+                  case "上海":
+                  getOp();
+                      box.children[2].style.display = "block";
+                      break;
+                  case "广东":
+                  getOp();
+                      box.children[3].style.display = "block";
+                      break;
+              }
+          }
+     </script>
+</body>
+</html>

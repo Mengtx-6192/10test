@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 14、页面上有一个按钮，点击能弹出一个对话框询问“请问你是女孩吗,”;如果选择确定，则显示“太好了～”，否则显示“没劲”  -->
+    <input type="button" value="按钮" id="btn">
+</body>
+<script>
+    var btn=document.getElementById('btn');
+    btn.onclick=function confirmd() {
+        var msg = "请问你是女孩吗?";
+        if (confirm(msg) == true) {
+            alert('太好了～');
+        } else {
+            alert('没劲');
+            // window.close();
+        }
+    }
+</script>
+</html>

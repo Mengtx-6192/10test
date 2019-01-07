@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <pre>
+                第八题，
+               1、页面上有一个按钮，点击能弹出一个对话框询问“请问你是女孩吗,”;如果选择确定，则显示“太好了～”，否则显示“没劲” 
+               2、页面上有一个按钮，点击后能让网页的背景不停变色 
+               3、页面上有一个按钮及文本框，在文本框中输入邮箱后，点击按钮能进行验证，要求不能为空，且必须包含@和. 
+               4、页面上有一个按钮，点击后能在文本框内显示出当前系统时间，如下图所示 
+               
+                   </pre>
+                   <div>
+                       <input type="button" value="你是女孩吗" id="btn1">
+                   </div>
+                   <div>
+                       <input type="button" value="变色" id="btn2">
+                   </div>
+                   <div>
+                       
+                       <input type="text" id="text1" placeholder="输入邮箱">
+                       <input type="button" value="邮箱" id="btn3">
+                   </div>
+               
+                   <div>
+                 
+                   <input type="text" id="text2" placeholder="显示时间">
+                   <input type="button" value="时间" id="btn4">
+                   
+                   </div>
+</body>
+<script>
+        var btn1 = document.getElementById("btn1");
+        btn1.onclick=function(){
+            var f = confirm("请问你是女孩吗?")
+            if(f){
+                alert("太好了～");
+            }else{
+                alert("没劲");
+            }
+        }
+        
+        var btn2 = document.getElementById("btn2");
+        var body = document.getElementsByTagName("body")[0];
+        btn2.onclick=function fn(){
+            var r=getRandom(0,255);
+            var g=getRandom(0,255);
+            var b=getRandom(0,255);  
+            body.style.backgroundColor="rgb("+r+","+g+","+b+")";  
+            setInterval(fn,100);
+        }
+        
+        function getRandom(min, max) {
+                return Math.floor(Math.random() *(max - min+1))+min;
+            }
+        
+        var btn3 = document.getElementById("btn3");
+          
+            var txtEMail = document.getElementById('text1');
+           
+            txtEMail.onblur = function () {
+                btn3.onclick=function(){ 
+              
+                // 验证用户的输入是否是邮箱地址  xxx@itcast.com.cn
+                var reg = /^\w+@\w+(\.\w+)+$/;
+                // 验证
+                if (!reg.test(txtEMail.value)) {      
+                   alert("输入正确的邮箱地址");
+                }else{
+                    alert("正确");
+                }
+              }
+           }
+            
+            
+            var btn4 =document.getElementById("btn4");
+             var txt=document.getElementById("text2");
+             btn4.onclick=function ff(){
+                 var date=new Date();
+                 txt.value=date.toLocaleString();
+                 setInterval(ff,1000);
+             }
+         
+        
+        
+        </script>
+</html>

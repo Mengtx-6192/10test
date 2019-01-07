@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    12、 在页面中使用oncopy禁止复制操作，并在用户进行复制时使用alert弹出提示信息:“禁止选取复制～”。 
+
+</body>
+<script>
+    document.oncopy=function(){
+        event.returnValue=false;
+        alert('禁止选取复制～');
+    }
+</script>
+</html>

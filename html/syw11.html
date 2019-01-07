@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .showtime {
+            display: inline-block;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            font-size: 40px;
+            border: 1px solid rgb(21, 4, 253);
+            background-color: rgb(255, 0, 0);
+        }
+        
+        #txt,
+        #select {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(230, 33, 66);
+            overflow: hidden;
+        }
+        
+        #copy,
+        #unable {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(243, 13, 13);
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var str = 'sdsagagsvasv';
+        var len = str.length;
+        var str_sub = str.charAt(3);
+        var index = str.indexOf('a');
+        function replaceChar(str, char, targetChar) {
+            while (str.indexOf(char) !== -1) {
+                str = str.replace(char, targetChar);
+            }
+            return str;
+        }
+        var sub_str = str.substr(1, 5);
+        var max = 0;
+        var c = null;
+
+        function find(str) {
+            while (str) {
+                var char = str.charAt(0);
+                var arr = str.split(char);
+                var count = str.length - (str = arr.join('')).length;
+                if (count > max) {
+                    c = char;
+                    max = count;
+                }
+            }
+
+            return {
+                'char': c,
+                'max': max
+            }
+        }
+        function find(str) {
+            var o = {};
+            var c = null;
+            var max = 0;
+            for (var i = 0; i < str.length; i++) {
+                var char = str[i];
+                if (o[char]) {
+                    o[char] = ++o[char];
+                } else {
+                    o[char] = 1;
+                }
+                if (o[char] > max) {
+                    c = char;
+                    max = o[char];
+                }
+            }
+            return {
+                'char': c,
+                'max': max
+            }
+        }
+        for (var i = 0; i < str.length; i++) {
+            document.write('@' + str[i] + '@');
+        }
+        function getTime() {
+            var dateTime = new Date();
+            var year = dateTime.getFullYear();
+            var month = dateTime.getMonth() + 1;
+            var date = dateTime.getDate();
+            var hour = String(dateTime.getHours()).padStart(2, '0');
+            var minutes = String(dateTime.getMinutes()).padStart(2, '0');
+            var second = String(dateTime.getSeconds()).padStart(2, '0');
+            dateTime = year + '年' + month + '月' + date + '日' + hour + '时' + minutes + '分' + second + '秒';
+            if (hour >= 8 && hour <= 12) {
+                var word = '早上好';
+            } else if (hour >= 12 && hour <= 14) {
+                var word = '中午好';
+            } else if (hour >= 14 && hour <= 18) {
+                var word = '下午好';
+            } else if (hour >= 19) {
+                var word = '晚上好';
+            }
+            return dateTime + '  ' + word;
+        }
+        function backOrGo(dayNum) {
+            var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+            var dateTime = new Date().valueOf();
+            var lastTime = dateTime + dayNum * 24 * 60 * 60 * 1000;
+            lastDate = new Date(lastTime);
+            var year = lastDate.getFullYear();
+            var month = lastDate.getMonth() + 1;
+            var data = lastDate.getDate();
+            var day = arr[lastDate.getDay()];
+            return '日期：' + year + '年' + month + '月' + data + '日 ' + day;
+        }
+        console.log(backOrGo(-1));
+ 
+       
+        function erci(x) {
+            return 2 * Math.pow(x, 2) + 3 * x + 5;
+        }
+
+        function getNum() {
+            var numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 0];
+            for (var i = 0; i < numArr.length; i++) {
+                var y = erci(numArr[i]);
+                console.log('(' + numArr[i] + ',' + y + ')');
+            }
+        }
+
+
+
+        var str = '';
+        for (var i = 1; i <= 9; i++) {
+            for (var j = 1; j <= i; j++) {
+                str += j + '×' + i + '=' + i * j + '\t';
+            }
+            str = str + '\n';
+        }
+
+    </script>
+    <br>
+    <select name="geov" id="geov">
+      <option value="0">省份</option>
+      <option value="1">西安</option>
+      <option value="2">上海</option>
+      <option value="3">金陵</option>
+      <option value="4">紫禁城</option>
+    </select>
+    <select name="" id="city">
+        <option value="">选择</option>
+    </select>
+    <script>
+ 
+        var geov = document.getElementById('geov');
+        var city = document.getElementById('city');
+        var grovList = [];
+        grovList[0] = ['请选择'];
+        grovList[1] = ['金陵东', '金陵西', '金陵南', '金陵北'];
+        grovList[2] = ['上海东', '上海西', '上海南', '上海北'];
+        grovList[3] = ['西安东', '西安西', '西安南', '西安北'];
+        grovList[4] = ['吉林东', '吉林东', '吉林东', '吉林东'];
+        geov.onchange = function() {
+            city.innerText = '';
+            for (var i = 0; i < grovList[this.value].length; i++) {
+                var option = document.createElement('option');
+                option.innerText = grovList[this.value][i];
+                city.appendChild(option);
+            }
+        }
+    
+        for (var i = 1; i <= 6; i++) {
+            document.write('<h' + i + '>欢迎</h' + i + '>');
+        }
+    </script>
+    <div class="showtime" id="showTime">123</div>
+    <script>
+        setInterval(timeDiv, 1000)
+        timeDiv();
+
+        function timeDiv() {
+            var time = new Date();
+            var hour = String(time.getHours()).padStart(2, '0');
+            var minutes = String(time.getMinutes()).padStart(2, '0');
+            var second = String(time.getSeconds()).padStart(2, '0');
+            var time = hour + ':' + minutes + ':' + second;
+            document.getElementById('showTime').innerText = time;
+        }
+    </script>
+    <script>
+        document.onkeypress = function(e) {
+            console.log('key:' + e.keyCode);
+        }
+    </script>
+    <div id="unable">禁用右键
+    </div>
+    <script>
+        document.getElementById('unable').oncontextmenu = function(e) {
+            alert('false')
+            e.preventDefault();
+        }
+    </script>
+    <div id="select">不可选取内容</div>
+    <script>
+        document.getElementById('select').onselectstart = function() {
+            alert('false');
+        }
+    </script>
+    <div id="copy">禁止复制</div>
+    <script>
+        document.getElementById('copy').oncopy = function() {
+            alert('false');
+        }
+    </script>
+    <div id="txt">背景颜色修改</div>
+    <script>
+        var bg = null;
+       
+        document.getElementById('txt').onmouseenter = function() {
+            bg = this.style.backgroundColor;
+            this.style.backgroundColor = "#CC66CC";
+        }
+        document.getElementById('txt').onmouseleave = function() {
+            this.style.backgroundColor = bg;
+        }
+    </script>
+    <input type="button" value="按钮" id="btn_gile"><br>
+    <script>
+      
+        document.getElementById('btn_gile').onclick = function() {
+            var flag = confirm('true or false');
+            if (flag) {
+                alert('true');
+            } else {
+                alert('false');
+            }
+        }
+    </script>
+    <input type="button" value="按钮" id="btn_color"><br>
+    <script>
+        function randomColor() {
+            var r = Math.floor(Math.random() * 256);
+            var g = Math.floor(Math.random() * 256);
+            var b = Math.floor(Math.random() * 256);
+            var color = 'rgb(' + r + ',' + g + ',' + b + ')';
+            return color;
+        }
+        var flag_color = true;
+        var timeId_color = null;
+        document.getElementById('btn_color').onclick = function() {
+            if (flag_color) {
+                timeId_color = setInterval(function() {
+                    document.body.style.backgroundColor = randomColor();
+                }, 1000);
+                flag_color = false;
+            } else {
+                clearInterval(timeId_color);
+                flag_color = true;
+            }
+        }
+    </script>
+    <input type="email" name="" id="email"><span></span> <br>
+    <input type="button" value="邮箱验证" id="btn_email"><br>
+    <script>
+     
+        document.getElementById('btn_email').onclick = function() {
+            var email = document.getElementById('email');
+            var reg = /\S+@\S+\./;
+            if (reg.test(email.value)) {
+                email.nextSibling.innerText = 'true';
+            } else {
+                email.nextSibling.innerText = 'false';
+            }
+        }
+    </script>
+    <input type="text" id="input_time" style="width:500px"><br>
+    <input type="button" value="系统时间" id="btn_time">
+    <script>
+        document.getElementById('btn_time').onclick = function() {
+            document.getElementById('input_time').value = new Date();
+        }
+    </script>
+</body>
+
+</html>

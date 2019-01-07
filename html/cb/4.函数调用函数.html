@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 1、 函数调用，建立两个函数，一个函数是中学二次函数表达式的计算方法，
+        另一个函数是给定任意的20个x值，调用前一个函数计算y对应的值，
+        并使用方式输出20个计算结果。 （就是写两个函数，一个函数调用另一个函数） */
+        function count() {
+            for (var i = 0; i < arguments.length; i++) {
+                console.log(arguments[i] * arguments[i] + arguments[i]);
+            }
+        }
+        +function result(...args) {
+            count(...args);
+        }(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
+    </script>
+</body>
+
+</html>

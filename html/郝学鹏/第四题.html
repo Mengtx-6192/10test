@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <section>
+
+        <select name="" id="area">
+            <option>请选择城市</option>
+        </select>
+
+        <select name="" id="city">
+            <option>城市</option>
+        </select>
+    </section>
+
+
+
+</body>
+
+<script>
+    var citySelect = [
+        { '上海': ['闵行', '松江', '浦东'] },
+        { '北京': ['昌平', '朝阳', '大兴'] },
+        { '南京': ['鼓楼', '雨花台'] }
+    ]
+    var area = document.getElementById('area');
+    var city = document.getElementById('city');
+
+
+    for (var i = 0; i < citySelect.length; i++) {
+
+        var optionA = document.createElement('option');
+
+        for (var key in citySelect[i]) {
+
+            optionA.innerHTML = key;
+
+            area.appendChild(optionA)
+
+        }
+    }
+
+    area.onchange = function () {
+
+        city.innerHTML = '';
+        var areaV = this.value;
+
+        for (var i = 0; i < citySelect.length; i++) {
+            for (var key in citySelect[i]) {
+
+                var arr = citySelect[i][key]
+
+                if (areaV == key) {
+
+                    for (var j = 0; j < arr.length; j++) {
+
+                        var optionB = document.createElement('option')
+                       
+                        optionB.innerHTML = arr[j]
+                        
+                        city.appendChild(optionB)
+                    }
+                }
+
+            }
+
+
+        }
+
+    }
+
+    var flag=window.confirm('你确定浏览吗');
+    if(flag){
+        alert('欢迎光临');
+    }else{
+        alert('下次再来')
+        window.close()
+    }
+
+
+</script>
+
+
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 需求：名字叫zs年龄为12的共有几个，只保留一个返回新数组给obj
+        var obj = [
+            { name: 'zs', age: 12 },
+            { name: 'ls', age: 13 },
+            { name: 'ww', age: 14 },
+            { name: 'qq', age: 15 },
+            { name: 'ww', age: 12 },
+            { name: 'zz', age: 12 },
+            { name: 'zs', age: 12 },
+            { name: 'zs', age: 16 },
+            { name: 'zs', age: 12 },
+            { name: 'zs', age: 18 },
+            { name: 'zs', age: 19 },
+            { name: 'zs', age: 19 },
+            { name: 'hh', age: 23 },
+            { name: 'jj', age: 34 },
+            { name: 'kk', age: 22 },
+            { name: 'ww', age: 11 },
+            { name: 'xx', age: 13 },
+            { name: 'oo', age: 12 },
+            { name: 'ii', age: 15 },
+            { name: 'uu', age: 6 },
+            { name: 'tt', age: 44 },
+        ]
+        var num = 0;
+        var arr = [];
+        //计算出现次数，删除重复属性和属性值
+        for (let k in obj) {
+            if (obj[k].name == 'zs' && obj[k].age == 12) {
+                num++;
+                if (num > 1) {
+                    delete obj[k].name
+                    delete obj[k].age
+                }
+            }
+            //去除空对象
+            for (let j in obj[k]) {
+                if (obj[k][j] != '' || j != '') {
+                    arr.push(obj[k]);
+                }
+            }
+        }
+        //数组去重
+        var newArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = i + 1; j < arr.length; j++) {
+                if (arr[i] == arr[j]) {
+                    newArr.push(arr[i]);
+                }
+            }
+        }
+        console.log(num);
+        console.log(newArr)
+        
+        
+
+
+
+        
+
+
+    </script>
+</body>
+
+</html>

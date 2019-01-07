@@ -1,0 +1,10 @@
+#no7{
+   
+}
+#no7::after
+{
+     background-color: yellow;
+     content: "哪吒";
+    height: 5000000px;
+    font-size: 1500px;
+}

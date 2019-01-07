@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 在页面中showtime的div中显示当前时间。格式如下: 
+::。每隔一秒刷新一次。  -->
+    <div></div>
+</body>
+<script>
+    var show = document.querySelector('div');
+    setInterval(function () {
+        var time = new Date();
+        var hour = time.getHours()>=10?time.getHours():'0'+time.getHours();
+        var minute = time.getMinutes()>=10?time.getMinutes():'0'+time.getMinutes();
+        var second = time.getSeconds()>=10?time.getSeconds():'0'+time.getSeconds();
+        show.innerHTML = '现在是' + hour + ':' + minute + ':' + second;
+
+    }, 1000);
+</script>
+
+</html>

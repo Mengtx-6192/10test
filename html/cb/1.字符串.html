@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*     一、 给定一个字符串例如:
+        “abaasdffggghhjjkkgfddsssss3444343”;问题如下: 
+        1、 字符串的字节长度 
+        2、 取出指定位置的字符，如:0,3,5,9等 
+        3、 查找指定字符是否在以上字符串中存在，如:i，c ，b等 
+        4、 替换指定的字符，如:g替换为22,ss替换为b等操作方法 
+        5、 截取指定开始位置到结束位置的字符串，如:取得1-5的字符串 
+        6、 找出以上字符串中出现次数最多的字符和出现的次数 
+        7、 遍历字符串，并将遍历出的字符两头添加符号“@”输出至当前的文档页面。 */
+        let str = 'abaasdffggghhjjkkgfddsssss3444343';
+        console.log('1.  字符串字节长度为:' + str.length);
+        console.log('2.  0,3,5,9索引对应的字符串分别是：' + str.charAt(0), str.charAt(3), str.charAt(5), str.charAt(9));
+        let arr = ['i', 'c', 'b'];
+        for (let i = 0; i < arr.length; i++) {
+            if (str.indexOf(arr[i]) == -1) {
+                console.log('3.  ' + arr[i] + ':不存在');
+            } else {
+                console.log('3.  ' + arr[i] + ':存在');
+            }
+        }
+        let arr1 = str.split('');
+        for (let i = 0; i < arr1.length; i++) {
+            arr1[i] = arr1[i] == 'g' ? 22 : arr1[i];
+            if (arr1[i] == 's' && arr1[i + 1] == 's') {
+                arr1[i] = '';
+                arr1[i + 1] = 'b';
+            }
+        }
+        console.log('4.  替换后的新字符串为：' + arr1.join(''));
+        console.log('5.  截取1-5位字符串为：' + str.slice(1, 6))
+
+        var newArr = str.split("");
+        // 2.创建一个对象
+        var json = [];
+        // 3. 遍历数组，判断对象中是否存在数组中的值，如果存在值+1，不存在赋值为1
+        for (var i = 0; i < newArr.length; i++) {
+            if (json[newArr[i]]) {
+                json[newArr[i]] += 1;
+            } else {
+                json[newArr[i]] = 1;
+            }
+        }
+        // 4 定义两个变量存储字符值，字符出现的字数
+        var num = 0;
+        var number = "";
+        for (var k in json) {
+            if (json[k] > num) {
+                num = json[k];
+                number = k;
+            }
+        }
+        console.log("6.  最多的字符：" + number + " 出现次数：" + num);
+
+        let arr2 = str.split('');
+        arr2.push('@');
+        arr2.unshift('@');
+        document.write(arr2.join(''));
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

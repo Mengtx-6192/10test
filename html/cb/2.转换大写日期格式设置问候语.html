@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 二、 根据当前日期进行以下方面的处理:
+        1、 取得日期的年份、月份、天、时、分、秒，并转换成大写日期格式
+        如: 2013年8月17日0时30分20秒
+        2、 根据日期的不同时间段，做问候语:
+        早上8: 00 - 12: 00 : “早上好～欢迎登陆系统”
+        中午12: 00 - 14: 00: “中午好～该休息了”
+        下午14: 00 - 18: 00: “下午好～欢迎登陆系统”
+        晚上19: 00 - 00: 00: “晚上好～XXXXXXXXX”
+        注: 你若觉得分的不够细，可以将时间段划分的更细一些。 */
+
+        var nowTime=new Date();
+        document.write(nowTime.toLocaleString());
+        var h=nowTime.getHours();
+        if(h>8&&h<12){
+            alert('早上好，欢迎登录系统')
+        }else if(h>12&&h<14){
+            alert('中午好，该休息了')
+        }else if(h>14&&h<18){
+            alert('下午好，欢迎登录系统')
+        }else if(h>19&&h<24){
+            alert('晚上好，小婊贝')
+        }
+
+
+
+    </script>
+</body>
+
+</html>

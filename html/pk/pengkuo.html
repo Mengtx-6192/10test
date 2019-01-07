@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <select name="province" id="province">
+        <option value="1">河南</option>
+        <option value="2">江苏</option>
+        <option value="3">北京</option>
+    </select>
+    <select name="" id="area">
+        <option value="1">郑州</option>
+        <option value="2">开封</option>
+        <option value="3">洛阳</option>
+        <option value="1">南阳</option>
+        <option value="2">信阳</option>
+        <option value="3">焦作</option>
+    </select>
+
+    <div id="showtime"></div>
+    <div id="txt"></div>
+    <input type="button" value="你是" id="btn1"><br>
+    <input type="button" value="变" id="btn2"><br>
+    <input type="button" value="验证邮箱" id="btn3">
+    <input type="text" id="email" placeholder="请输入邮箱">
+    <br>
+    <input type="button" value="获取时间" id="btn4">
+    <input type="text" id="time">
+    <br>
+    <a href="jsApi强化题.html">他的强化题!!!</a>
+    <script>
+        // js基础练习题
+
+        //     第一题 给定一个字符串例如:
+        // “abaasdffggghhjjkkgfddsssss3444343”;问题如下:
+        var str = "abaasdffggghhjjkkgfddsssss3444343";
+        // 1、 字符串的字节长度
+        let len = str.length;
+
+        // 2、 取出指定位置的字符，如:0,3,5,9等
+        // str[0],str[3],str[5],str[9]
+
+        // 3、 查找指定字符是否在以上字符串中存在，如:i，c ，b等
+        // console.log(str.indexOf("i"));存在返回第一次出现的索引，不存在返回-1
+
+        // 4、 替换指定的字符，如:g替换为22,ss替换为b等操作方法
+        // console.log(str.replace(/g/g,"22"));
+        // console.log(str.replace(/ss/g,"b"));
+
+        // 5、 截取指定开始位置到结束位置的字符串，如:取得1-5的字符串
+        // console.log(str.slice(1, 5));
+
+        // 6、 找出以上字符串中出现次数最多的字符和出现的次数
+        var obj = {};
+
+        for (var i = 0; i < str.length; i++) {
+                var k=str[i];
+                if (obj[k]) {
+                    obj[k]++;
+                } else {
+                    obj[k] = 1;
+                }
+            }
+        var max=0;
+        for(var key in obj){
+           max=obj[key]>max?obj[key]:max;
+        }
+        console.log(max);
+
+        // 7、 遍历字符串，并将遍历出的字符两头添加符号“@”输出至当前的文档页面
+        var str2 = "@";
+        //    var str=str2.concat(str.concat(str2));
+        for (var i = 0; i < str.length; i++) {
+            document.write("@" + str[i] + "@");
+        }
+
+
+
+        //  二、 根据当前日期进行以下方面的处理:
+        // 1、 取得日期的年份、月份、天、时、分、秒，并转换成大写日期格式
+        // var date=new Date();
+        // let year=date.getFullYear();
+        // let month=date.getMonth()+1;
+        // let day=date.getDate();
+        // let hour=date.getHours();
+
+        // let minute=date.getMinutes();
+        // let Second=date.getSeconds();
+        // console.log(year+"年"+month+"月"+day+"日"+hour+"时"+minute+"分"+Second+"秒");
+
+        // 如:2013年8月17日0时30分20秒
+        // 2、 根据日期的不同时间段，做问候语:
+        // 早上8:00-12:00 :“早上好～欢迎登陆系统”
+        // if(hour>=8&&hour<12){
+        //     alert("早上好～欢迎登陆系统");
+        // }else if(hour>=12&&hour<14){
+        //     alert("中午好～该休息了");
+        // }else if(hour>=14&&hour<18){
+        //     alert("下午好～欢迎登陆系统");
+        // }else if(hour>=19&&hour<24){
+        //     alert("晚上好～XXXXXXXXX");
+        // }
+
+        // 中午12:00-14:00:“中午好～该休息了”
+        // 下午14:00-18:00:“下午好～欢迎登陆系统”
+        // 晚上19:00-00:00:“晚上好～XXXXXXXXX”
+        // 注:你若觉得分的不够细，可以将时间段划分的更细一些。
+
+        // 3、 计算当前时间向前、向后的日期，并取出是星期几。 （扩展）
+        // var a1=parseInt(prompt("请输入前几天"));
+        // if(month==1||month==3||month==5||month==7||month==8||month==10||month==12){
+        //     if(day>a1){
+        //         console.log(day-a1);
+        //     }else{
+        //         30-(a1-day)
+        //         console.log();
+        //     }
+        // }else if(nonth==2){
+
+        // }
+
+
+        // 三、 函数调用，建立两个函数，一个函数是中学二次函数表达式的计算方法，另一个函数是给定任意的20个x值，
+        // 调用前一个函数计算y对应的值，并使用方式输出20个计算结果。 （就是写两个函数，一个函数调用另一个函数）
+        // function random(){
+        //     let arr=[];
+        //     for(let i=0;i<20;i++){
+        //         let num=parseInt(Math.random()*100);
+        //         arr.push(num);
+        //     }
+        //     return arr;
+        // }
+        // function fn(arr){
+        //     let obj={};
+        //     for(let i=0;i<arr.length;i++){
+        //         var result=2*arr[i]*arr[i]+1;
+        //         obj[arr[i]]=result;
+        //     }
+        //     return obj;
+        // }
+        // console.log(fn(random()));\
+
+        // 四、 使用二重循环打印9×9乘法表。
+        // var str="";
+        // for(var i=1;i<=9;i++){
+        //     for(var j=1;j<i;j++){
+        //         str+=j+"×"+i+"="+j*i+"\t"
+        //     }
+        //     str+="\n";
+        // }
+        // console.log(str);
+
+
+        // 7、 使用JavaScript中变量定义省份及对应的城市，应用Select标签对象，实现二级级联的
+        // 下拉菜单选中效果。也就是说，在省份下拉菜单中，选中一个省份时，在城市下拉菜单中出现对应城市选择内容。
+        var obj = {
+            "北京": ["东城区", "西城区", "朝阳区", "顺义区", "海淀区"],
+            "河南": ["郑州市", "商丘市", "开封", "洛阳", "信阳"],
+            "江苏": ["南京市", "苏州市", "无锡市", "常州市", "南通市"]
+        };
+        //获取省份
+        var province = document.getElementById("province");
+        //获取城市
+        var area = document.getElementById("area");
+
+        //注册表单改变事件
+        province.oninput = function () {
+            //存储地区
+            var arr1 = null;
+            //存储动态添加的内容
+            var arr2 = [];
+            //获取省份下的选中
+            var sec = province.children;
+            for (var i = 0; i < sec.length; i++) {
+                if (sec[i].selected) {
+                    // 获取对应的地区
+                    arr1 = obj[sec[i].innerText];
+                }
+            }
+            //遍历数组进行动态添加
+            for (var j = 0; j < arr1.length; j++) {
+                arr2.push("<option>" + arr1[j] + "</option>");
+            }
+            //进行设置内容
+            area.innerHTML = arr2.join("");
+        }
+
+
+        //     1、 在打开页面时弹出一个确认对话框显示:“你确定继续浏览吗,”。如果用户点击确定，
+        // 则用alert显示信息“欢迎光临～”;若用户点击取消，则用alert显示信息“欢迎再来～”并使用window.close 关闭页面
+        // var flag=confirm("你确定浏览吗");
+        // if(flag){
+        //     alert("欢迎光临～");
+        // }else{
+        //     alert("欢迎再来～");
+        //     window.close();
+        // }
+
+
+        // 2、 使用循环语句和document.write，依次以h1~h6的6级标题格式在页面中输出6行“欢迎 光临”。
+        // var str="";
+        // for(var i=1;i<=6;i++){
+        //     str+="<h"+i+">"+"欢迎 光临"+"</h"+i+">";
+        // }
+        // document.write(str);
+
+
+        // 5、 在页面中showtime的div中显示当前时间。格式如下:
+        // ::。每隔一秒刷新一次。
+        let showtime = document.getElementById("showtime");
+
+        setInterval(function () {
+            var date = new Date();
+            let hour = date.getHours();
+            hour = hour > 10 ? hour : "0" + hour;
+            let minute = date.getMinutes();
+            minute = minute > 10 ? minute : "0" + minute;
+            let Second = date.getSeconds();
+            Second = Second > 10 ? Second : "0" + Second;
+            showtime.innerText = hour + ":" + minute + ":" + Second;
+        }, 1000);
+
+
+
+        // 1、 使用onkeypress事件，在页面按下字符按键时，获取用户按下的按键编号，并在状态栏
+        // 用以下格式显示:
+        // “您刚才所按下的按键为:„”。
+        // window.onkeypress=function(e){
+        // console.log("您刚才所按下的按键为:"+e.key);
+        // }
+
+        // 2、 在页面中禁止右键的使用，并在用户点击鼠标右键时使用alert弹出提示
+        // document.onmousedown=function(e){
+        //     if(e.button==2){
+        //     e.returnValue=false;
+        //         alert("禁止");
+        //     }
+
+        // }
+        // document.oncontextmenu = function () {
+        //         event.returnValue = false;
+        //         alert('禁止右键');
+        //  }
+        // 3、 在页面中使用onselectstart禁止选择操作，并在用户进行选择时使用alert弹出提示信息:
+        // “禁止选取～”。
+        // document.onselectstart=function(event){
+        //     event.returnValue = false;
+        //     alert("禁止选取～");
+        // }
+        // 4、 在页面中使用oncopy禁止复制操作，并在用户进行复制时使用alert弹出提示信息:“禁
+        // 止选取～”。
+        // document.oncopy=function(event){
+        //     alert("禁止选取～");
+        //     return false;
+        // }
+        // 5、 对页面中txt的div按以下要求设置鼠标事件:鼠标在上时，背景颜色修改为#CC66CC，
+        var txt = document.getElementById("txt");
+        txt.style.width = "100px";
+        txt.style.height = "100px";
+        txt.style.border = "1px solid red";
+        txt.onmouseenter = function () {
+            txt.style.backgroundColor = "#CC66CC";
+        }
+        txt.onmouseleave = function () {
+            txt.style.backgroundColor = "";
+        }
+        // 1、页面上有一个按钮，点击能弹出一个对话框询问“请问你是女孩吗,”;如果选择确定，则显示“太好了～”，否则显示“没劲”
+        var btn1 = document.getElementById("btn1");
+        btn1.onclick = function () {
+            var flag = confirm("请问你是女孩吗");
+            if (flag) {
+                alert("太好了～");
+            } else {
+                alert("没劲");
+            }
+        }
+        // 2、页面上有一个按钮，点击后能让网页的背景不停变色
+        var btn2 = document.getElementById("btn2");
+        btn2.onclick = function () {
+            setInterval(function () {
+                var num1 = parseInt(Math.random() * 255);
+                var num2 = parseInt(Math.random() * 255);
+                var num3 = parseInt(Math.random() * 255);
+                document.body.style.backgroundColor = "rgb(" + num1 + "," + num2 + "," + num3 + ")";
+            }, 1000);
+        }
+// 3、页面上有一个按钮及文本框，在文本框中输入邮箱后，点击按钮能进行验证，要求不能为空，且必须包含@和.
+var btn3=document.getElementById("btn3");
+var email=document.getElementById("email");
+var reg=/[@.]{1,}/;
+btn3.onclick=function(){
+    //获取email的value
+    var txt=email.value;
+    if(txt.length==0){
+        alert("不能为空")
+    }else{
+        if(reg.test(txt)){
+            alert('输入成功')
+        }else{
+            alert('失败必须包含@和.')
+        }
+    }
+}
+// 4、页面上有一个按钮，点击后能在文本框内显示出当前系统时间，如下图所示
+var btn4=document.getElementById("btn4");
+var time=document.getElementById("time");
+btn4.onclick=function(){
+        let date=new Date();
+        let year=date.getFullYear();
+        let month=date.getMonth()+1;
+        let day=date.getDate();
+        let hour=date.getHours();
+
+        let minute=date.getMinutes();
+        let Second=date.getSeconds();
+        time.value=year+"年"+month+"月"+day+"日"+hour+"时"+minute+"分"+Second+"秒";
+}
+    </script>
+
+
+</body>
+
+</html>

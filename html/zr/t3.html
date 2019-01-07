@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 1、 函数调用，建立两个函数，一个函数是中学二次函数表达式的计算方法，
+        // 另一个函数是给定任意的20个x值，调用前一个函数计算y对应的值，
+        // 并使用方式输出20个计算结果。 （就是写两个函数，一个函数调用另一个函数）
+        // 2、 使用二重循环打印9×9乘法表。
+
+
+        onload = function () {
+            fn2();
+
+            function fn1(x) {
+                console.log('1-\t' + x * x);
+            }
+
+            function fn2() {
+                for (var i = 0; i < 5; i++) {
+                    fn1(Math.floor(Math.random() * 11));
+                }
+            }
+
+            // ********************************************************
+
+            var arr = [];
+            for (var i = 1; i <= 9; i++) {
+                for (var j = 1; j < i + 1; j++) {
+                    arr.push(j + 'x' + i + '=' + i * j + '\t\t');
+                }
+                arr.push('\n');
+            }
+            console.log(arr.join(''));
+
+            // ********************************************************
+
+            var arr = [];
+            for (var i = 1; i <= 9; i++) {
+                for (var j = i; j <= 9; j++) {
+                    arr.push(i + 'x' + j + '=' + i * j + '\t\t');
+                }
+                arr.push('\n');
+            }
+            console.log(arr.join(''));
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <a href="../../test.html#no47">返回test.html</a><br>
+    <a href="../zr.html">返回zr.html</a><br>
+</body>
+
+</html>

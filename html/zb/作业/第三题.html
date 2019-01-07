@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+1、 函数调用，建立两个函数，一个函数是中学二次函数表达式的计算方法，
+    另一个函数是给定任意的20个x值，调用前一个函数计算y对应的值，并
+    使用方式输出20个计算结果。 （就是写两个函数，一个函数调用另一个函数）
+2、 使用二重循环打印9×9乘法表。
+        
+    </pre>
+</body>
+<script>
+    function fn(x) {
+        y = x * x + x;
+        return y;
+    }
+    var str = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+    for (var i = 0; i < str.length; i++) {
+        console.log(fn(str[i]));
+    }
+  
+    for(var i=1;i<=9;i++){
+        for(var j=1;j<=i;j++){
+            document.write(j+"*"+i+"="+i*j+"&nbsp;");
+        }
+        document.write("<br/>");
+    }
+
+</script>
+
+</html>

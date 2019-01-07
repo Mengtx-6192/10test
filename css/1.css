@@ -1,0 +1,6 @@
+a#bing{
+    display: block;
+    width: 60%;
+    height: 50px;
+    background-image: linear-gradient( to right,lightcoral ,lightblue);
+}

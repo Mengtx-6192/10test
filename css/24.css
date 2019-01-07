@@ -1,0 +1,12 @@
+#no24{
+	display: inline-block;
+	background-color: rgb(255,100,100);
+	font-size: 50px;
+	color: white;
+	width: 500px;
+	height: 150px;
+	line-height: 150px;
+	text-align: center;
+	border-radius: 50%;
+	text-decoration: none;
+}

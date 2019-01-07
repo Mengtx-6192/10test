@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #topBar {
+            
+            padding: 0 0 0 200px;
+            /* width: 100%; */
+            /* margin: 0 auto; */
+            height: 100px;
+            line-height: 100px;
+        }
+        #topBar span {
+            position: relative;
+            display: inline-block;
+            height: 25px;
+            width: 80px;
+            line-height: 25px;
+            text-align: center;
+            background: gainsboro;
+            margin-right: 35px;
+        }
+        #topBar span::after {
+            cursor: pointer;
+            content: 'X';
+            position: absolute;
+            top: 0;
+            right: -20px;
+            width: 20px;
+            background: gainsboro;
+        }
+        table {
+            margin: 10px auto;
+            width: 800px;
+            border: 1px solid;
+        }
+
+        th,
+        td {
+            border: 1px solid red;
+            text-align: center;
+        }
+        #page {
+            text-align: center;
+        }
+        #page span {
+            display: inline-block;
+            width: 135px;
+            height: 20px;
+            line-height: 20px;
+            font-size: 20px;
+        }
+</style>
+
+<body>
+    <div id="topBar"></div>
+    <table id="table">
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="allcheck">全选</th>
+                <th>名称</th>
+                <th>编号</th>
+                <th>分类</th>
+                <th>描述</th>
+            </tr>
+        </thead>
+    </table>
+    <script>
+        let datas = [
+            { name: '冰箱', id: 'bx001', catagory: '家电', desc: '可以冷藏东西的东西' },
+            { name: '冰柜', id: 'bx002', catagory: '家电', desc: '可以冷藏东西的东西' },
+            { name: '空调', id: 'kt001', catagory: '家电', desc: '夏天必备' },
+            { name: '电视', id: 'ds001', catagory: '家电', desc: '可以看小电影' },
+            { name: '电脑', id: 'dn001', catagory: '家电', desc: '网上冲浪' },
+            { name: '卷纸', id: 'jz001', catagory: '生活用品', desc: '卷起来的纸' },
+            { name: '小刀', id: 'xd001', catagory: '生活用品', desc: '不是电动车的那个小刀' },
+            { name: '洗衣液', id: 'xyy001', catagory: '日常用品', desc: '洗衣服用的，听说和香水一样哦' },
+            { name: '麦片', id: 'mp001', catagory: '食物', desc: '可以吃的东东' },
+            { name: '82年红茶', id: 'hc001', catagory: '饮料', desc: '听说只有帅气的人才能天天喝' },
+        ]
+        var table = document.getElementById("table");
+        var btn = document.getElementById("btn");
+        var tbody = document.createElement("tbody");
+        var topBar = document.querySelector("#topBar");
+        var tdcheck = document.getElementById(td1);
+        table.appendChild(tbody);
+        for (var i = 0; i < datas.length; i++) {
+            var tr = document.createElement("tr")
+            tbody.appendChild(tr);
+            tbody.setAttribute("id", "tbd");
+            var td1 = document.createElement("td");
+            tr.appendChild(td1);
+            td1.setAttribute("id", "td1");
+            td1.innerHTML = "<input type='checkbox'>";
+            td1.children[0].setAttribute("index", datas[i].name);
+            var index = td1.children[0].getAttribute("index");
+            console.log(index)
+
+            for (var k in datas[i]) {
+                var td = document.createElement("td")
+                tr.appendChild(td);
+                td.innerHTML = datas[i][k];
+            }
+
+        }
+        var allcheck = document.getElementById("allcheck");
+        var tbd = document.getElementById("tbd");
+        var inputs = tbd.querySelectorAll("input");
+        // 全选框
+        allcheck.onclick = function () {
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].checked = this.checked;
+            }
+            if (this.checked) {
+                var len = topBar.children.length;
+                for (var i = 0; i < len; i++) {
+                    topBar.children[0].remove();
+                }
+                if (inputs[i].checked) {
+                    for (var i = 0; i < inputs.length; i++) {
+                        var span = document.createElement("span");
+                        inputs[i].checked = this.checked;
+                        var checkId = inputs[i].getAttribute('index');
+                        span.id = "span" + checkId;
+                        topBar.appendChild(span);
+                        var index = inputs[i].getAttribute('index');
+                        span.innerText = index;
+                        span.onclick = function () {
+                            console.log((this.id).replace("span", ""));
+                            this.remove();
+                            allcheck.checked = false;
+                            for (var k = 0; k < inputs.length; k++) {
+                                var checkId = inputs[k].getAttribute('index');
+                                if (checkId == (this.id).replace("span", "")) {
+                                    inputs[k].checked = false;
+                                }
+                            }
+                        }
+                    }
+                }
+                else {
+                    var spanDom = topBar.querySelector("#span" + checkId);
+                    topBar.removeChild(spanDom)
+                }
+            } else {
+                for (var i = 0; i < topBar.children.length;) {
+                    topBar.children[i].remove();
+                }
+            }
+        }
+
+        // 子选框
+        for (var i = 0; i < inputs.length; i++) {
+            tbd.onclick = function () {
+                var flag = true;
+                for (var j = 0; j < inputs.length; j++) {
+                    if (!inputs[j].checked) {
+                        flag = false;
+                    }
+                }
+                allcheck.checked = flag;
+            }
+        }
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].onclick = function () {
+                topBar.style.display = "block";
+                var checkId = this.getAttribute('index');
+                if (this.checked) {
+                    var span = document.createElement("span");
+                    span.id = "span" + checkId;
+                    topBar.appendChild(span);
+                    var index = this.getAttribute('index');
+                    span.innerText = index;
+                    span.onclick = function () {
+                            console.log((this.id).replace("span", ""));
+                            this.remove();
+                            allcheck.checked = false;
+                            for (var k = 0; k < inputs.length; k++) {
+                                var checkId = inputs[k].getAttribute('index');
+                                if (checkId == (this.id).replace("span", "")) {
+                                    inputs[k].checked = false;
+                                }
+                            }
+                        }
+                }
+                else {
+                    var spanDom = topBar.querySelector("#span" + checkId);
+                    topBar.removeChild(spanDom)
+                }
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .one,.two,.three,.four{
+            width: 100px;
+            height: 50px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one">禁止选取</div>
+    <div class="two">禁止使用右键</div>
+    <div class="three">禁止复制</div>
+    <div class="four">鼠标放上去变色</div>
+    <input type="button" value="请问你是女孩吗" id="btn">
+    <input type="button" value="点击变色" id="btn1">
+    <input type="button" value="浏览网页" id="btn2"><br />
+    <input type="button" value="验证邮箱" id="btn3">
+    <input type="text" value="" id="txt"><br />
+    <input type="button" value="点击显示时间" id="btn4">
+    <input type="text" value="" id="txt1"><br />
+    选择城市:<select id="province"></select>
+    选择区:<select id="area"></select><br/>
+    <script>
+        // “abaasdffggghhjjkkgfddsssss3444343”;问题如下: 
+        // var str = "abaasdffggghhjjkkgfddsssss3444343";
+        //1、 字符串的字节长度  33
+        // console.log(str.length);
+        // 2、 取出指定位置的字符，如:0,3,5,9等 
+        // console.log(str[0]);
+        // console.log(str[3]);
+        // console.log(str[5]);
+        // console.log(str[9]);
+        // 3、 查找指定字符是否在以上字符串中存在，如:i，c ，b等 
+        // console.log(str.indexOf("i"));
+        // console.log(str.indexOf("c"));
+        // console.log(str.indexOf("b"));
+        // 4、 替换指定的字符，如:g替换为22,ss替换为b等操作方法 
+        // while (str.indexOf("g") !== -1){
+        //     str = str.replace("g","22");
+        // }
+        // console.log(str);
+        // while(str.indexOf("ss") !== -1){
+        //     str = str.replace("ss","b");
+        // }
+        // console.log(str);
+
+
+        // 5、 截取指定开始位置到结束位置的字符串，如:取得1-5的字符串 
+        // console.log(str.substr(0,5));
+
+
+        // 6、 找出以上字符串中出现次数最多的字符和出现的次数 
+        // var arr = str.split("");
+
+        // 7、 遍历字符串，并将遍历出的字符两头添加符号“@”输出至当前的文档页面。
+        // var arr = str.split("");
+        // for (var i = 0; i < arr.length; i++) {
+        //     arr[i] = "@" + arr[i] + "@";
+        // }
+        // document.write(arr.join(""));
+
+
+
+        //         二、 根据当前日期进行以下方面的处理: 
+        // 1、 取得日期的年份、月份、天、时、分、秒，并转换成大写日期格式 
+        // 如:2013年8月17日0时30分20秒 
+        var now = new Date();
+        var month = now.getMonth() + 1;
+        document.write(now.getFullYear() + "年" + month + "月" + now.getDate() + "日" + now.getHours() + "时" + now.getMinutes() +
+            "分" + now.getSeconds() + "秒");
+
+        // 2、 根据日期的不同时间段，做问候语: 
+        // 早上8:00-12:00 :“早上好～欢迎登陆系统” 
+        // 中午12:00-14:00:“中午好～该休息了” 
+        // 下午14:00-18:00:“下午好～欢迎登陆系统” 
+        // 晚上19:00-00:00:“晚上好～XXXXXXXXX” 
+        // 注:你若觉得分的不够细，可以将时间段划分的更细一些。
+        var hours = now.getHours();
+        if (hours > 8 && hours < 12) {
+            alert("早上好～欢迎登陆系统");
+        } else if (hours >= 12 && hours < 14){
+            alert("中午好～该休息了");
+        }else if (hours >= 14 && hours < 18){
+            alert("下午好～欢迎登陆系统");
+        }else if (hours >= 19 && hours < 24){
+            alert("晚上好～XXXXXXXXX");
+        }
+
+        // 3、 计算当前时间向前、向后的日期，并取出是星期几。 （扩展）
+
+        // 1、 函数调用，建立两个函数，一个函数是中学二次函数表达式的计算方法，另一个函数是给定任意的20个x值，
+        // 调用前一个函数计算y对应的值，并使用方式输出20个计算结果。 （就是写两个函数，一个函数调用另一个函数）
+        // 2、 使用二重循环打印9×9乘法表。
+        var str = "";
+        for (var i = 1; i <= 9; i++) {
+            str += "<br>";
+            for (var j = 1; j <= i; j++) {
+                str += j + "×" + i + "=" + i * j + " ";
+
+            }
+        }
+        document.write(str);
+
+
+        //         三、实现二级级联的 
+        // 使用JavaScript中变量定义省份及对应的城市，应用Select标签对象
+        // 下拉菜单选中效果。也就是说，在省份下拉菜单中，选中一个省份时，在城市下拉菜单中出现对应城市选择内容。
+
+        const datas = [
+            {
+                "安徽": ["合肥", "芜湖", "蚌埠", "安庆", "马鞍山"]
+            },
+            {
+                "南京": ["六合", "浦口", "江宁", "雨花台", "栖霞"]
+            },
+            {
+                "北京": ["仓平", "怀柔", "延庆", "大兴", "通州"]
+            },
+           
+        ];
+
+        var province = document.getElementById("province");
+        var area = document.getElementById("area");
+
+
+        // 初始化第一个select省份数据
+        for (let idx in datas) {
+            for (let prov in datas[idx]) {
+                let option = document.createElement('option');
+                option.innerText = prov;
+                province.appendChild(option);
+            }
+        }
+
+        // 初始化第二个select地市数据（之所以这么写是因为数据是动态变化的，不能直接写死数据）
+        for (let p in datas[0]) {
+            for (let r = 0; r < datas[0][p].length; r++) {
+                let option = document.createElement('option');
+                option.innerText = datas[0][p][r];
+                area.appendChild(option);
+            }
+        }
+
+        province.addEventListener('change', function (e) {
+            // 先清空第二个select地市内容
+            if (area.children.length > 0) {
+                for (let i = 0; i < area.children.length; i++) {
+                    area.removeChild(area.children[i]);
+                    i--;
+                }
+            }
+
+            // 填充地市数据
+            let options = e.target.children;
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].selected) {
+                    let pro = options[i].innerText;
+                    for (let j = 0; j < datas[i][pro].length; j++) {
+                        let option = document.createElement('option');
+                        option.innerText = datas[i][pro][j];
+                        area.appendChild(option);
+                    }
+                }
+            }
+        });
+
+
+
+        // 四、
+        // 1、在打开页面时弹出一个确认对话框
+        // 2、显示:“你确定继续浏览吗,”。如果用户点击确定， 
+        // 则用alert显示信息“欢迎光临～”;若用户点击取消，则用alert显示信息“欢迎再来～”并使用window.close 关闭页面
+        var btn2 = document.getElementById("btn2");
+        btn2.onclick = function(){
+            var result = window.confirm("你确定继续浏览吗?");
+            if(result){
+                alert("欢迎光临～");
+            }else{
+                alert("欢迎再来～");
+                window.close();
+            }
+        }
+
+        // 五、
+        // 1、 使用语句循环和document.write，依次以h1~h6的6级标题格式在页面中输出6行“欢迎 光临”。
+        for(var i=1;i<7;i++){
+            var h = document.createElement("h"+i);
+            document.body.appendChild(h);
+            h.innerHTML = "欢迎光临";
+        }
+
+        // 2、 在页面中的div中显示当前时间。格式如下: 
+        // 15:31:59。每隔一秒刷新一次。 
+        // 提示:使用innerText/innerHTML。 
+
+        // 五
+        // 1、 使用onkeypress事件，在页面按下字符按键时，获取用户按下的按键编号，并在状态栏 
+        // 用以下格式显示: 
+        // “您刚才所按下的按键为:„”。
+        document.addEventListener('keypress', function(e) {
+            console.log("您刚才所按下的按键为:" + e.key);
+            console.log("您刚才所按下的按键编号为:" + e.keyCode);
+        });
+
+
+        // 2、 在页面中禁止右键的使用，并在用户点击鼠标右键时使用alert弹出提示
+        var two = document.querySelector(".two");
+        two.onmousedown = function(e){
+        // console.log(e);
+        if(e.which == 3){
+            alert("禁止使用右键");
+        }
+        }
+        // 3、 在页面中使用onselectstart禁止选择操作，并在用户进行选择时使用alert弹出提示信息: 
+        // “[i]”。 
+        var one = document.querySelector(".one");
+        one.onselectstart = function(e){
+            alert("禁止选取～");
+        }
+        // 4、 在页面中使用oncopy禁止复制操作，并在用户进行复制时使用alert弹出提示信息:“禁 
+        // 止选取～”。
+        var three = document.querySelector(".three");
+        three.oncopy = function(e){
+            e.returnValue = false;
+            alert("禁止选取～");
+        }
+        // 5、对页面中的div按以下要求设置鼠标事件:鼠标在上时，背景颜色修改为#CC66CC， 
+        var four = document.querySelector(".four");
+        four.onmouseover = function(){
+            this.style.backgroundColor = "#CC66CC";
+        }
+
+        // 六 
+        // 1、页面上有一个按钮，点击能弹出一个对话框询问“请问你是女孩吗,”;如果选择确定，则显示“太好了～”，否则显示“没劲” 
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            var result = window.confirm("请问你是女孩吗");
+            if(result){
+                alert("太好了～");
+            }else{
+                alert("没劲");
+            }
+        }
+        // 2、页面上有一个按钮，点击后能让网页的背景不停变色
+        var btn1 = document.getElementById("btn1");
+        var colors = ["red","pink","blue","orange","green"];
+        let idx = 0;
+        btn1.addEventListener('click', function() {
+            document.body.style.backgroundColor = colors[idx++];
+            if (idx === 5) {
+                idx = 0;
+            }
+        });
+
+        // 3、页面上有一个按钮及文本框，在文本框中输入邮箱后，点击按钮能进行验证，要求不能为空，且必须包含@和. 
+        var btn3 = document.getElementById("btn3");
+        var txt = document.getElementById("txt");
+
+        btn3.addEventListener('click', function() {
+            let s = txt.value;
+            if (s.length === 0) {
+                alert('请输入邮箱');
+                return;
+            }
+
+            if (!(/@/.test(s) && /\./.test(s))) {
+                alert('请输入正确的邮箱格式且必须包含@和.');
+                return;
+            }
+        });
+
+
+        // 4、页面上有一个按钮，点击后能在文本框内显示出当前系统时间
+        // 16:22:02
+
+        var btn4 = document.getElementById("btn4");
+        var txt1 = document.getElementById("txt1");
+
+        btn4.onclick = function(){
+            txt1.value = getCurrTime();
+            setInterval(function(){
+                txt1.value = getCurrTime();
+            }, 1000);
+        }
+
+        function getCurrTime() {
+            const date = new Date();
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            return currTime = fmtTime(hours) + ":" + fmtTime(minutes) + ":" + fmtTime(seconds);
+        }
+
+        function fmtTime(t) {
+            if(String(t).length === 1) {
+                t = '0' + t;
+            }
+            return t;
+        }
+    </script>
+</body>
+
+</html>

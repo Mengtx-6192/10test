@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            height: 200px;
+            border: 10px solid red;
+            margin: 100px auto;
+        }
+    
+    
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    
+</body>
+<script>
+    window.onload=function(){
+
+        function  keyPress() {
+            window.onkeypress=function(e){
+                var key=e.key;
+                var keyCode=e.keyCode;
+                alert('您刚才所按下的按键为:'+key+'您刚才所按下的按键编号为:'+keyCode)
+
+            }
+         }
+         keyPress()
+
+         function forbidRightMouse(){
+            document.onmousedown=function(e){
+                var which=e.which;
+                console.log(which)
+                if(which==3){
+                    alert('右键被禁止使用了');
+                    return false;
+                }
+            }
+         }
+         forbidRightMouse()
+
+         document.onselectstart=function(e){
+             alert('禁止选取');
+             e.returnValue=false;
+         }
+         document.onselectstart=function(e){
+             alert('禁止选取');
+             return false;
+         }
+
+         document.oncopy=function(){
+             alert('禁止复制');
+             e.returnValue=false;
+         }
+         document.oncopy=function(){
+             alert('禁止复制');
+             return false;
+         }
+
+         var div=document.querySelector('div')
+         
+         div.onmouseover=function(){
+             div.style.backgroundColor='#CC66CC'
+         }
+         div.onmouseleave=function(){
+             div.style.backgroundColor=''
+         }
+
+
+    }
+
+
+</script>
+</html>

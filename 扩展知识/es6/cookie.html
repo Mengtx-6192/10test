@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="setcookie">设置cookie</button>
+    <script>
+        // 运行cookie，必须运行在服务器上。
+        // 设置键值
+        document.cookie = "key=value";
+        // 设置过期时间, 10s过后自动失效
+        // document.cookie = "key=value;max-age=10"; // 当创建后开始计算时间，单位s
+        // document.cookie = "key=value;expires="+new Date() // 到固定的时间就会结束，一般就是new Date()的时间格式
+        // 发送 http 请求的时候, 就会将 cookie 发送.在设置 secure 特性后, 可以指定在 https 请求的时候发送 cookie该属性的取值为 true 与 false( 默认 )
+    </script>
+</body>
+
+</html>

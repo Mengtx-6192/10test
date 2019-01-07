@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 10、 在页面中禁止右键的使用，并在用户点击鼠标右键时使用alert弹出提示 -->
+</body>
+<script>
+    //oncontextmenu事件
+    document.oncontextmenu = function () {
+        event.returnValue = false;
+        alert('禁止右键');
+    }
+
+
+    //onmousedown事件
+    // document.onmousedown = function () {
+    //     if (event.button == 2) {
+    //         event.returnValue = false;
+    //         alert("右键被禁止啦！");
+    //     }
+    // }
+</script>
+
+</html>

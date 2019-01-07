@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #input{
+            display: none;
+            width: 400px;
+            height: 100px;
+            background-color: deepskyblue;
+            border: 1px solid #ccc;
+            outline: none;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body id="body">
+<!--七-->
+<!--1、页面上有一个按钮，点击能弹出一个对话框询问“请问你是女孩吗,”;如果选择确定，则显示“太好了～”，否则显示“没劲”-->
+<!--2、页面上有一个按钮，点击后能让网页的背景不停变色-->
+<!--3、页面上有一个按钮及文本框，在文本框中输入邮箱后，点击按钮能进行验证，要求不能为空，且必须包含@和.-->
+<!--4、页面上有一个按钮，点击后能在文本框内显示出当前系统时间，如下图所示-->
+<button id="btn1">boy&girl</button><br/>
+<button id="btn2">changeBgColor</button><br/>
+<button id="btn4">当前时间</button><br/>
+<input type="text" id="input">
+<form action="">
+    输入邮箱：<input type="email" pattern="^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"><br/>
+    <input type="submit">
+</form>
+<script>
+    var btn1=document.getElementById("btn1");
+    btn1.addEventListener("click",function () {
+        like=window.confirm("请问你是女孩吗?");
+        if(like==true){
+            alert("太好了～");
+        }else {
+            alert("没劲");
+        }
+    });
+    var body=document.getElementById("body");
+    var btn2=document.getElementById("btn2");
+    btn2.onclick=function () {
+        var r=0;
+        var g=0;
+        var b=0;
+        r=parseInt(Math.random()*255);
+        g=parseInt(Math.random()*255);
+        b=parseInt(Math.random()*255);
+        body.style.backgroundColor="rgb("+r+","+g+","+b+")";
+    };
+    var btn4=document.getElementById("btn4");
+    var input=document.getElementById("input");
+    btn4.onclick=function () {
+        input.style.display="block";
+        var data=new Date();
+        var year=data.getFullYear();
+        var mouth=data.getMonth()+1;
+        var day=data.getDay();
+        var h=data.getHours();
+        var m=data.getMinutes();
+        var s=data.getSeconds();
+        input.value=year+"年"+mouth+"月"+day+"日"+h+"时"+m+"分"+s+"秒";
+    }
+</script>
+</body>
+</html>

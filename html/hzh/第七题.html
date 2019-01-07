@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="isgirl" id="isgirl"> <br>
+    <input type="button" value="color" id="color"><br>
+    <input type="text" id="emial">
+    <input type="button" value="test" id="test"><br>
+    <input type="text" id="timeshow">
+    <input type="button" value="time" id="time">
+    <script>
+
+
+        var girl = document.querySelector('#isgirl');
+        var bd = document.querySelector('#bd');
+        var color = document.querySelector('#color');
+        var emial = document.querySelector("#emial");
+        var test = document.querySelector('#test')
+        var timeshow = document.querySelector("#timeshow");
+        var time = document.querySelector('#time');
+        // 1、页面上有一个按钮，点击能弹出一个对话框询问“请问你是女孩吗,”;如果选择确定，则显示“太好了～”，否则显示“没劲” 
+        girl.onclick = function () {
+            var mymessage = confirm("请问你是女孩吗");
+            if (mymessage == true) { alert("太好了～"); }
+            else {
+                alert("没劲");
+            }
+        }
+        // 2、页面上有一个按钮，点击后能让网页的背景不停变色 
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min
+        }
+        function colorChange() {
+            var r = getRandom(0, 255);
+            var g = getRandom(0, 255);
+            var b = getRandom(0, 255);
+            document.querySelector("body").style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+        }
+        color.onclick = function () {
+            colorChange();
+            setInterval(function () {
+                colorChange();
+            }, 1000)
+        }
+        // 3、页面上有一个按钮及文本框，在文本框中输入邮箱后，点击按钮能进行验证，要求不能为空，且必须包含@和. 
+        test.onclick = function () {
+            var reg = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/g;
+            if (reg.test(emial.value)) {
+                alert('邮箱输入正确')
+            } else {
+                alert('邮箱输入错误')
+            }
+        }
+        // 4、页面上有一个按钮，点击后能在文本框内显示出当前系统时间，如下图所示 
+        time.onclick = function () {
+            var date = new Date();
+            var year = date.getFullYear();
+            var mouth = date.getMonth();
+            var day = date.getDate();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+            timeshow.value = year + '年' + (mouth + 1) + '月' + day + '日' + hour + "时" + minute + "分" + second + '秒';
+        }
+    </script>
+</body>
+
+</html>

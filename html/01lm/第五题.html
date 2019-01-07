@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 使用JavaScript中变量定义省份及对应的城市，应用Select标签对象，实现二级级联的 
+下拉菜单选中效果。也就是说，在省份下拉菜单中，选中一个省份时，在城市下拉菜单中出现对应城市选择内容。 -->
+        <select name="" id="sf"></select>
+        <select name="城市" id="city"></select>
+     
+        <!-- <option value="江苏"></option> -->
+</body>
+<script>
+var sf = document.querySelector('#sf');
+var option1= document.createElement('option');
+option1.value='shengfen';
+option1.innerText='省份';
+sf.appendChild(option1);
+var option2= document.createElement('option');
+option2.value='jiangsu';
+option2.innerText='江苏';
+sf.appendChild(option2);
+var option0= document.createElement('option');
+option0.value='shanxi';
+option0.innerText='山西';
+sf.appendChild(option0);
+
+var city = document.querySelector('#city');
+var option3= document.createElement('option');
+
+option3.innerText='城市';
+city.appendChild(option3);
+sf.onchange=function(){
+    var val = sf.value;
+    if(val =='jiangsu'){
+        city.innerHTML='<option value="">城市</option><option value="">南京</option><option value="">无锡</option><option value="">苏州</option>'
+    }else if(val =='shanxi'){
+        city.innerHTML='<option value="">城市</option><option value="">太原</option><option value="">吕梁</option><option value="">运城</option>'
+    }
+}
+
+
+</script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+        // 1、页面上有一个按钮，点击能弹出一个对话框询问“请问你是女孩吗,”;如果选择确定，则显示“太好了～”，否则显示“没劲” 
+        // 2、页面上有一个按钮，点击后能让网页的背景不停变色 
+        // 3、页面上有一个按钮及文本框，在文本框中输入邮箱后，点击按钮能进行验证，要求不能为空，且必须包含@和. 
+        // 4、页面上有一个按钮，点击后能在文本框内显示出当前系统时间，如下图所示 
+
+
+        onload = function () {
+            var btn = document.getElementById('btnGender');
+
+            var btn = document.getElementById('btnColor');
+
+            var btn = document.getElementById('txtEmail');
+            var btn = document.getElementById('isOK');
+            var btn = document.getElementById('btnSubmit');
+
+            var btn = document.getElementById('txtShowTime');
+            var btn = document.getElementById('btnShowTime');
+
+
+
+            btnGender.onclick = function () {
+                confirm('女的？') ? alert('OK') : alert('OUT');
+            }
+
+
+
+            btnColor.onclick = function () {
+                document.body.style.backgroundColor = getColor16();
+            }
+            function getColor16() {
+                var color = '#';
+                var item = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+                for (var i = 0; i < 6; i++) {
+                    color += item[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+
+
+            btnSubmit.onclick = function () {
+                var regExp = /^\w+@\w+.\w+$/;
+                if (regExp.test(txtEmail.value)) isOK.innerText = '正确';
+                else isOK.innerText = '错误';
+            }
+
+
+
+            btnShowTime.onclick = function () {
+                txtShowTime.value = new Date();
+
+            }
+
+        }
+
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <a href="../../test.html#no47">返回test.html</a><br>
+    <a href="../zr.html">返回zr.html</a><br><br>
+    <button id="btnGender">男的女的</button><br>
+    <button id="btnColor">换色</button><br>
+    <form action="">
+        <input type="text" id="txtEmail"><span id="isOK"></span>
+    </form>
+    <input type="button" value="提交" id="btnSubmit"> <br>
+    <input type="text" style="width:400px;" value="系统时间" id="txtShowTime"><input type="button" value="点击显示系统时间" id="btnShowTime">
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .txt {
+            width: 600px;
+            height: 300px;
+            margin: auto;
+            background-color: pink;
+        }
+        h1 {
+            color:#fff;
+            text-align: center;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="txt" id="box">
+        <h1>进来了吗?</h1>
+    </div>
+    <script>
+        // 5、 对页面中txt的div按以下要求设置鼠标事件:鼠标在上时，背景颜色修改为#CC66CC， 
+        var box =document.getElementById('box');
+        box.onmouseenter=function(){
+            box.style.backgroundColor="#c6c";
+        }
+        box.onmouseleave=function(){
+            box.style.backgroundColor="pink";
+        }
+    
+    </script>
+</body>
+</html>

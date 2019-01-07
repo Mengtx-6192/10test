@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        data = [{
+            'name': 'zs',
+            'age': 18
+        }, {
+            'name': 'ls',
+            'age': 19
+        }, {
+            'name': "ww",
+            'age': 20
+        }, {
+            'name': 'zl',
+            'age': 21
+        }, {
+            'name': 'zq',
+            'age': 21
+        }];
+
+        function removeReapt(key, arr) {
+            for (let i = 0; i < arr.length; i++) {
+                for (let j = i + 1; j < arr.length; j++) {
+                    if (arr[i][key] === arr[j][key]) {
+                        arr.splice(j, 1);
+                        j--;
+                    }
+                }
+            }
+            return arr;
+        }
+        console.log(removeReapt('name', data));
+    </script>
+</body>
+
+</html>

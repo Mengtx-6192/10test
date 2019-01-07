@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>求选择，求选取，求虐</p>
+    <script>
+        /* 3、 在页面中使用onselectstart禁止选择操作，并在用户进行选择时使用alert弹出提示信息:
+        “禁止选取～”。 */
+        document.onselectstart=function(){
+            // return false;
+            alert('禁止选取');
+            
+        }
+
+
+    </script>
+</body>
+
+</html>

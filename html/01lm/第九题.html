@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+        
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        请输入一个数字
+        <input type="text">
+    </div>
+    <!-- 使用onkeypress事件，在页面按下字符按键时，获取用户按下的按键编号，并在状态栏 
+用以下格式显示: 
+“您刚才所按下的按键为:„”。  -->
+</body>
+<script>
+    window.onkeypress = function (e) {
+       
+        
+        switch (e.keyCode) {
+            case 48:
+                alert('0')
+                break;
+            case 49:
+                alert('1')
+                break;
+            case 50:
+                alert('2')
+                break;
+            case 51:
+                alert('3')
+                break;
+            case 52:
+                alert('4')
+                break;
+            case 53:
+                alert('5')
+                break;
+            case 54:
+                alert('6')
+                break;
+            case 55:
+                alert('7')
+                break;
+            case 56:
+                alert('8')
+                break;
+            case 57:
+                alert('9')
+                break;
+
+            default:
+            alert('您输入的不是数字，请输入数字')
+                break;
+        }
+
+
+    }
+   
+</script>
+
+</html>

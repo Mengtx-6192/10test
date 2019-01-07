@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+	<a id="a">111</a>
+    <input type="text" placeholder="请输入键" id="key">
+    <input type="text" placeholder="请输入值" id="value">
+    <button id="btn">点击</button>
+    <script type="text/javascript">
+        let btn = document.getElementById('btn');
+        let key = document.getElementById('key');
+        let value = document.getElementById('value');
+        let a = document.getElementById('a');
+
+        btn.onclick = function () {
+        	// sessionStorage.setItem(key.value, value.value)
+        let value = document.getElementById('value');
+        	a.href = "./test2.html?id="+value.value+""
+        }
+    </script>
+</body>
+</html>

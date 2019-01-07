@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+    <style>
+		.showTime{
+			width: 200px;
+			height: 100px;
+			border: 1px solid #ccc;
+			/*background-color: blue;*/
+			/*color: white;*/
+		}
+    </style>
+</head>
+<body>
+	<div class="showTime">啊啊啊啊</div>
+	<input type="button" id="btn" value="按钮">
+	<a href="强化题.html">强化题</a>
+	<script>
+	// 	    js练习题编程 
+	// <!-- 一、 给定一个字符串例如:
+	// “abaasdffggghhjjkkgfddsssss3444343”;问题如下: --> 
+	// <!-- 1、 字符串的字节长度 --> 
+	// var str = 'abaasdffggghhjjkkgfddsssss3444343';
+	// console.log(str.length)
+  	  // console.log(Math.max.apply(Math,[3,6,4,1]))
+
+
+
+	// <!-- 2、 取出指定位置的字符，如:0,3,5,9等 
+	// console.log(str[0]);
+	// console.log(str[3]);
+	// console.log(str[9])
+	// console.log(str[5])
+	// 3、 查找指定字符是否在以上字符串中存在，如:i，c ，b等 
+	// console.log(str.indexOf('i'))
+	// console.log(str.indexOf('c'))
+	// console.log(str.indexOf('d'))
+	// 4、 替换指定的字符，如:g替换为22,ss替换为b等操作方法 
+
+	// for (var i = 0; i < str.length; i++) {	
+	// 		var str=str.replace('g','22')
+	// 		str=str.replace('ss','b')	
+	// }
+	// console.log(str)
+	// 5、 截取指定开始位置到结束位置的字符串，如:取得1-5的字符串\
+	 // var str1=str.slice(1,6)
+	 // console.log(str1)
+	// 6、 找出以上字符串中出现次数最多的字符和出现的次数 
+		
+		// var sum=0;
+		// for (var i = 0; i < str.length; i++) {
+		// 	var  str1= str.charAt(i)
+		// 	var index=0;
+		// 	for (var j = 0; j < str.length; j++) {
+		// 		var str2=str.charAt(j)
+		// 		if (str1==str2) {
+		// 			index++
+
+		// 		}
+		// 		if (index>sum) {
+		// 			sum=index;
+		// 			var str3=str[i]
+		// 		}
+		// 	}
+		// }
+		// console.log(sum)
+		// console.log(str3)
+	// 7、 遍历字符串，并将遍历出的字符两头添加符号“@”输出至当前的文档页面。 --> 
+	// var arr = str.split('')
+	// var arr1=[]
+	// for (var i = 0; i < arr.length; i++) {
+	// 	arr1.push('@'+arr[i]+'@')
+	// }
+	// document.write(arr1.join(''))
+	
+	// <!-- 二、 根据当前日期进行以下方面的处理: 
+	// 1、 取得日期的年份、月份、天、时、分、秒，并转换成大写日期格式 
+	// 如:2013年8月17日0时30分20秒 
+	// var date = new Date()
+	// var year = date.getFullYear()
+	// var month = date.getMonth()+1
+	// var dates = date.getDate()
+	// var hour = date.getHours()
+	// var minute = date.getMinutes()
+	// var second = date.getSeconds()
+	// var day = date.getDay();
+	// var arr = ['天','一','二','三','四','五','六']
+	// console.log('当前的日期是'+year+'年'+month+'月'+dates+'日'+hour+'时'+minute+'分'+second+'秒'+'星期'+arr[day])
+	// 2、 根据日期的不同时间段，做问候语: 
+	// 早上8:00-12:00 :“早上好～欢迎登陆系统” 
+	// 中午12:00-14:00:“中午好～该休息了” 
+	// 下午14:00-18:00:“下午好～欢迎登陆系统” 
+	// 晚上19:00-00:00:“晚上好～XXXXXXXXX” 
+	// 注:你若觉得分的不够细，可以将时间段划分的更细一些。
+	// var date = new Date()
+	// var hour = date.getHours()
+	// console.log(hour)
+	// if (hour>=8&&hour<12){
+	// 	alert('早上好～欢迎登陆系统')
+	// }else if (hour>=12&&hour<14){
+	// 	alert('中午好～该休息了')
+	// }else if (hour>=14&&hour<=18){
+	// 	alert('下午好～欢迎登陆系统')
+	// }else if(hour>=19&&hour<=24){
+	// 	alert('晚上不睡觉，干嘛呢')
+	// }
+	// 3、 计算当前时间向前、向后的日期，并取出是星期几。 （扩展） -->
+		// var date = +new Date()
+		// console.log(date-24*60*60*1000)
+		// var date1 = new Date(date-24*60*60*1000)
+		// console.log(date1)
+		// var date2 = new Date(date+24*60*60*1000)
+		// console.log(date2)
+		// var day1 = date1.getDay()
+		// var day2 = date2.getDay()
+		// console.log(day1,day2)
+// 		1、 函数调用，建立两个函数，一个函数是中学二次函数表达式的计算方法，另一个函数是给定任意的20个x值，调用前一个函数计算y对应的值，并使用(x,y)方式输出20个计算结果。 （就是写两个函数，一个函数调用另一个函数）
+		// function getY(x) {
+			 
+		// 	return x*x
+		// }
+		// function getResult(){
+		// 	for (var i = 0; i < arguments.length; i++) {
+		// 		console.log('('+arguments[i]+','+getY(arguments[i])+')')			
+		// 	}
+		// }
+		// getResult(1,2,3)
+// 2、 使用二重循环打印9×9乘法表。
+	// var str=''
+	// for (var i = 1; i <=9; i++) {
+	// 	for (var j = 1; j <=i; j++) {
+	// 		str+=j+'×'+i+'='+i*j+'\t'
+	// 	}str+='\n'
+	// }
+	// console.log(str)
+// 三、实现二级级联的 
+// 1使用JavaScript中变量定义省份及对应的城市，应用Select标签对象
+// 2下拉菜单选中效果。也就是说，在省份下拉菜单中，选中一个省份时，在城市下拉菜单中出现对应城市选择内容。
+			// var arr = ['安徽','江苏','湖南']
+			// var arr1 =[]
+			// arr1[0]=['安庆','合肥','马鞍山']
+			// arr1[1]=['南京','苏州','宿迁']
+			// arr1[2]=['长沙','株洲','湘潭']
+			// var select = document.createElement('select')
+			// document.body.appendChild(select)
+			// for (var i = 0; i < arr.length; i++) {
+			// 	var option = document.createElement('option')
+			// 	select.appendChild(option)
+			// 	option.innerHTML=arr[i]
+			// 	// option.setAttribute('index',i)
+			// 	option.value = i;
+			// 	}
+			// 	var select1 = document.createElement('select')
+			// 		document.body.appendChild(select1)
+			// 		var option1 = document.createElement('option')
+			// 		select1.appendChild(option1)
+			// 		option1.innerHTML='请选择'
+			// 	for (var m = 0; m < arr1.length; m++) {
+			// 		select.onchange=function(){
+			// 			select1.innerHTML=''
+			// 			// var index=+this.getAttribute('index');
+			// 			var index = this.value;
+			// 			console.log(index)
+						
+			// 			for (var j = 0; j < arr1[index].length; j++) {
+							
+			// 				var option2 = document.createElement('option')
+			// 				option2.innerHTML=arr1[index][j]
+			// 				select1.appendChild(option2)
+			// 			}
+			// 		}
+			// 	}
+	
+// 四、
+// 1、在打开页面时弹出一个确认对话框
+// 2、显示:“你确定继续浏览吗,”。如果用户点击确定， 
+// 则用alert显示信息“欢迎光临～”;若用户点击取消，则用alert显示信息“欢迎再来～”并使用window.close 关闭页面
+	  // var flag=confirm('你确定继续浏览吗?')
+	  // if (flag) {
+	  // 	alert('欢迎光临～')
+	  // }else{
+	  // 	alert('欢迎再来～')
+	  // 	window.close()
+	  // }
+// 五、
+// 1、 使用循环语句和document.write，依次以h1~h6的6级标题格式在页面中输出6行“欢迎 光临”。
+		// for (var i = 1; i <=6; i++) {
+		 
+		// 	document.write('<h'+i+'>'+'欢迎 光临'+'</ h'+i+'>')
+		// }
+
+// 2、 在页面中showtime的div中显示当前时间。格式如下: 
+// ::。每隔一秒刷新一次。 
+// 提示:使用innerText/innerHTML。
+// 	var showTime = document.getElementsByClassName('showTime')[0]
+// 	setInterval(function(){
+// 		var date = new Date()
+// 	var year = date.getFullYear()
+// 	var month = date.getMonth()+1
+// 	var dates = date.getDate()
+// 	var hour = date.getHours()
+// 	var minute = date.getMinutes()
+// 	var second = date.getSeconds()
+// 	// console.log('当前的日期是'+year+'年'+month+'月'+dates+'日'+hour+'时'+minute+'分'+second+'秒')
+// 	showTime.innerText='当前的日期是'+year+'年'+month+'月'+dates+'日'+hour+'时'+minute+'分'+second+'秒'
+// },1000)
+// 五
+// 1、 使用onkeypress事件，在页面按下字符按键时，获取用户按下的按键编号，并在状态栏 
+// 用以下格式显示: 
+// “您刚才所按下的按键为:„”。
+		 // document.onkeypress=function(e){
+		 // 	alert('您刚才所按下的按键为:'+e.keyCode)
+		 // }
+		 // 在页面中禁止右键的使用，并在用户点击鼠标右键时使用alert弹出提示
+		 // document.oncontextmenu = function(){
+		 // 	alert('禁止右击')
+		 // 	return false;
+		 // }
+// 3、 在页面中使用onselectstart禁止选择操作，并在用户进行选择时使用alert弹出提示信息: 
+// “禁止选取～”。
+		// document.onselectstart=function() {
+		// 	alert('禁止选取')
+		// }
+// 4、 在页面中使用oncopy禁止复制操作，并在用户进行复制时使用alert弹出提示信息:“禁 
+// 止选取～”。
+		// document.oncopy=function(){
+		// 	alert('禁止复制')
+		// } 
+// 5、对页面中txt的div按以下要求设置鼠标事件:鼠标在上时，背景颜色修改为#CC66CC，
+		// var txt = document.querySelector('.showTime')
+		// txt.onmouseover=function(){
+		// 	this.style.backgroundColor='#CC66CC'
+		// }
+		// txt.onmouseout=function(){
+		// 	this.style.backgroundColor='transparent'
+		// }
+// 六 
+// 1、页面上有一个按钮，点击能弹出一个对话框询问“请问你是女孩吗,”;如果选择确定，则显示“太好了～”，否则显示“没劲” 
+		// var str = confirm('请问你是女孩吗？')
+		// if(str){
+		// 	alert('太好了')
+		// }else{
+		// 	alert('没劲')
+		// }
+// 2、页面上有一个按钮，点击后能让网页的背景不停变色 
+		// var btn = document.querySelector('#btn')
+		// btn.onclick=function(){
+		// 	setInterval(function(){
+		// 		var r = Math.floor(Math.random() * (255 - 0 + 1) + 0)
+		// 		var g = Math.floor(Math.random() * (255 - 0 + 1) + 0)
+		// 		var b = Math.floor(Math.random() * (255 - 0 + 1) + 0)
+		// 		document.body.style.backgroundColor='rgb('+r+','+g+','+b+')'
+		// 	},1000)
+		// }
+  
+// 3、页面上有一个按钮及文本框，能在文本框内显示出当前系统时间，如下图所示 
+		var btn = document.querySelector('#btn')
+		btn.onclick=function(){
+			var showTime = document.getElementsByClassName('showTime')[0]
+	setInterval(function(){
+		var date = new Date()
+	var year = date.getFullYear()
+	var month = date.getMonth()+1
+	var dates = date.getDate()
+	var hour = date.getHours()
+	var minute = date.getMinutes()
+	var second = date.getSeconds()
+	showTime.innerText='当前的日期是'+year+'年'+month+'月'+dates+'日'+hour+'时'+minute+'分'+second+'秒'
+},1000)
+		}
+
+	</script>
+</body>
+</html>

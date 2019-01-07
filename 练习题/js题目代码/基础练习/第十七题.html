@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 4、页面上有一个按钮，点击后能在文本框内显示出当前系统时间，如下图所示  -->
+    <input type="text" id="text"> <br>
+    <button id="btn">按钮</button>
+</body>
+<script>
+    var text =document.getElementById('text');
+    var btn=document.getElementById('btn');
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    var d = date.getDate();
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    btn.onclick=function(){
+        text.value=year + '年' + month + '月' + d + '日' + h + '时' + m + '分' + s + '秒';
+    }
+    
+</script>
+</html>

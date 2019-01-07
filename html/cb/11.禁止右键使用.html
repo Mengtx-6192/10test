@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 2、 在页面中禁止右键的使用，并在用户点击鼠标右键时使用alert弹出提示
+        function click(e) {
+            // console.log(e)
+            // console.log(e.button);
+            if (e.button == 2) {
+                alert('本网页禁止右键使用，敬请谅解，谢谢')
+            }
+        }
+        document.onmousedown = click;
+
+
+
+    </script>
+</body>
+
+</html>

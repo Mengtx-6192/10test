@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 使用JavaScript中变量定义省份及对应的城市，应用Select标签对象下拉菜单选中效果。
+        // 也就是说，在省份下拉菜单中，选中一个省份时，在城市下拉菜单中出现对应城市选择内容。
+
+
+        onload = function () {
+            var selProvince = document.getElementById('selProvince');
+            var selCities = document.getElementById('selCities');
+            selProvince.style.float = 'left';
+            selCities.style.float = 'left';
+
+            var v;
+
+            for (var i = 0; i < selCities.length; i++) {
+                if (selCities.children[i].value === '1') continue;
+                selCities.children[i].style.display = 'none';
+            }
+
+            selProvince.onchange = function () {
+
+                for (var i = 0; i < selProvince.length; i++) {
+                    if (selProvince.children[i].selected) {
+                        v = selProvince.children[i].value;
+                        console.log(v);
+                    }
+                }
+
+                for (var i = 0; i < selCities.length; i++) {
+                    selCities.children[i].style.display = 'none';
+                }
+
+                for (var i = 0; i < selCities.length; i++) {
+                    if (selCities.children[i].value === v) {
+                        selCities.children[i].style.display = 'block';
+                    }
+                }
+            }
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <a href="../../test.html#no47">返回test.html</a><br>
+    <a href="../zr.html">返回zr.html</a><br><br>
+    <select name="" value="省份" id="selProvince">
+        <option value="1">北京</option>
+        <option value="2">上海</option>
+        <option value="3">广东</option>
+        <option value="4">江苏</option>
+        <option value="5">浙江</option>
+    </select>
+    <select name="" value="城市" multiple id="selCities">
+        <option value="1">北京</option>
+
+        <option value="2">上海</option>
+
+        <option value="3">广州</option>
+        <option value="3">深圳</option>
+        <option value="3">东莞</option>
+        <option value="3">惠州</option>
+        <option value="3">中山</option>
+        <option value="3">汕头</option>
+        <option value="3">佛山</option>
+        <option value="3">韶关</option>
+        <option value="3">清远</option>
+        <option value="3">珠海</option>
+
+        <option value="4">南京</option>
+        <option value="4">苏州</option>
+        <option value="4">无锡</option>
+        <option value="4">扬州</option>
+        <option value="4">常州</option>
+        <option value="4">镇江</option>
+        <option value="4">南通</option>
+        <option value="4">徐州</option>
+        <option value="4">连云港</option>
+        <option value="4">泰州</option>
+        <option value="4">宿迁</option>
+        <option value="4">盐城</option>
+        <option value="4">淮安</option>
+
+        <option value="5">杭州</option>
+        <option value="5">宁波</option>
+        <option value="5">温州</option>
+        <option value="5">绍兴</option>
+        <option value="5">湖州</option>
+        <option value="5">嘉兴</option>
+        <option value="5">金华</option>
+        <option value="5">衢州</option>
+        <option value="5">舟山</option>
+        <option value="5">台州</option>
+        <option value="5">丽水</option>
+
+    </select>
+
+
+</body>
+
+</html>

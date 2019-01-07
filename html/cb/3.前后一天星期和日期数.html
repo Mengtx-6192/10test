@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 3、 计算当前时间向前、向后的日期，并取出是星期几。 （扩展） */
+        var nowTime = new Date();
+        var year = nowTime.getFullYear();
+        var month = nowTime.getMonth() + 1;
+        var data = nowTime.getDate();//获取当前日期
+        var day = nowTime.getDay();//获取星期
+        // console.log(day);
+        var preData, nextData, preDay, nextDay;//声明前/后一天日期/星期
+        var days = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+        //计算是否是闰年,闰年2月有29天
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+            var dataMax;
+            if (mouth == 2) {
+                dataMax = 29
+            }
+        } else {
+            if (month == 2) {
+                dataMax = 28
+            }
+        }
+        // 测试代码
+        /* var year=2000;
+        var month=2;
+        var day=0;
+        var data=29;
+        var dataMax=29; */
+
+        switch (month) {
+            case 1:
+                preData = data == 1 ? 31 : data - 1;
+                nextData = data == 31 ? 1 : data + 1;
+                preDay = day == 0 ? 6 : day - 1;
+                nextDay = day == 6 ? 0 : day + 1;
+                document.write('昨天是' + preData + '日' + days[preDay] + ',明天是' + nextData + '日' + days[nextDay]);
+                break;
+            case 2:
+                preData = data == 1 ? 31 : data - 1;
+                nextData = data == dataMax ? 1 : data + 1;
+                preDay = day == 0 ? 6 : day - 1;
+                nextDay = day == 6 ? 0 : day + 1;
+                document.write('昨天是' + preData + '日' + days[preDay] + ',明天是' + nextData + '日' + days[nextDay]);
+                break;
+            case 3:
+                preData = data == 1 ? 31 : data - 1;
+                nextData = data == 31 ? 1 : data + 1;
+                preDay = day == 0 ? 6 : day - 1;
+                nextDay = day == 6 ? 0 : day + 1;
+                document.write('昨天是' + preData + '日' + days[preDay] + ',明天是' + nextData + '日' + days[nextDay]);
+                break;
+            case 4:
+                preData = data == 1 ? 30 : data - 1;
+                nextData = data == 30 ? 1 : data + 1;
+                preDay = day == 0 ? 6 : day - 1;
+                nextDay = day == 6 ? 0 : day + 1;
+                document.write('昨天是' + preData + '日' + days[preDay] + ',明天是' + nextData + '日' + days[nextDay]);
+                break;
+            case 5:
+                preData = data == 1 ? 31 : data - 1;
+                nextData = data == 31 ? 1 : data + 1;
+                preDay = day == 0 ? 6 : day - 1;
+                nextDay = day == 6 ? 0 : day + 1;
+                document.write('昨天是' + preData + '日' + days[preDay] + ',明天是' + nextData + '日' + days[nextDay]);
+                break;
+            case 6:
+                preData = data == 1 ? 30 : data - 1;
+                nextData = data == 30 ? 1 : data + 1;
+                preDay = day == 0 ? 6 : day - 1;
+                nextDay = day == 6 ? 0 : day + 1;
+                document.write('昨天是' + preData + '日' + days[preDay] + ',明天是' + nextData + '日' + days[nextDay]);
+                break;
+            case 7:
+                preData = data == 1 ? 31 : data - 1;
+                nextData = data == 31 ? 1 : data + 1;
+                preDay = day == 0 ? 6 : day - 1;
+                nextDay = day == 6 ? 0 : day + 1;
+                document.write('昨天是' + preData + '日' + days[preDay] + ',明天是' + nextData + '日' + days[nextDay]);
+                break;
+            case 8:
+                preData = data == 1 ? 31 : data - 1;
+                nextData = data == 31 ? 1 : data + 1;
+                preDay = day == 0 ? 6 : day - 1;
+                nextDay = day == 6 ? 0 : day + 1;
+                document.write('昨天是' + preData + '日' + days[preDay] + ',明天是' + nextData + '日' + days[nextDay]);
+                break;
+            case 9:
+                preData = data == 1 ? 30 : data - 1;
+                nextData = data == 30 ? 1 : data + 1;
+                preDay = day == 0 ? 6 : day - 1;
+                nextDay = day == 6 ? 0 : day + 1;
+                document.write('昨天是' + preData + '日' + days[preDay] + ',明天是' + nextData + '日' + days[nextDay]);
+                break;
+            case 10:
+                preData = data == 1 ? 31 : data - 1;
+                nextData = data == 31 ? 1 : data + 1;
+                preDay = day == 0 ? 6 : day - 1;
+                nextDay = day == 6 ? 0 : day + 1;
+                document.write('昨天是' + preData + '日' + days[preDay] + ',明天是' + nextData + '日' + days[nextDay]);
+                break;
+            case 11:
+                preData = data == 1 ? 30 : data - 1;
+                nextData = data == 30 ? 1 : data + 1;
+                preDay = day == 0 ? 6 : day - 1;
+                nextDay = day == 6 ? 0 : day + 1;
+                document.write('昨天是' + preData + '日' + days[preDay] + ',明天是' + nextData + '日' + days[nextDay]);
+                break;
+            case 12:
+                preData = data == 1 ? 31 : data - 1;
+                nextData = data == 31 ? 1 : data + 1;
+                preDay = day == 0 ? 6 : day - 1;
+                nextDay = day == 6 ? 0 : day + 1;
+                document.write('昨天是' + preData + '日' + days[preDay] + ',明天是' + nextData + '日' + days[nextDay]);
+                break;
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .showtime {
+            width: 400px;
+            height: 200px;
+            background: hotpink;
+            margin: 100px auto;
+        }
+
+        .showtime p {
+            font-size: 30px;
+            text-align: center;
+            margin-top: 30px;
+            color: #fff;
+        }
+
+        span {
+            display: block;
+            float: left;
+            width: 40px;
+            height: 40px;
+            background: red;
+            line-height: 40px;
+            margin: 40px 5px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .showtime span:nth-of-type(3n) {
+            background: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="showtime" id="showtime">
+        <p>showtime</p>
+        <span id="h">00</span>
+        <span>时</span>
+        <span>:</span>
+        <span id="m">00</span>
+        <span>分</span>
+        <span>:</span>
+        <span id="s">00</span>
+        <span>秒</span>
+    </div>
+    <script>
+        /* 2、 在页面中showtime的div中显示当前时间。格式如下: 
+::。每隔一秒刷新一次。 
+提示:使用innerText/innerHTML。  */
+        
+        var getTime = function () {
+            var h = document.getElementById("h")
+            var m = document.getElementById("m")
+            var s = document.getElementById("s")
+            var nowTime = new Date();
+            var hour = nowTime.getHours();
+            hour = hour < 10 ? '0' + hour : hour;
+            var minute = nowTime.getMinutes();
+            minute = minute < 10 ? '0' + minute : minute;
+            var secend = nowTime.getSeconds();
+            secend = secend < 10 ? '0' + secend : secend;
+            h.innerText = hour;
+            m.innerText = minute;
+            s.innerText = secend;
+        }
+        getTime();
+        setInterval(getTime,1000);
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

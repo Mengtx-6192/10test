@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 3、 函数调用，建立两个函数，一个函数是中学二次函数表达式的计算方法，
+    另一个函数是给定任意的20个x值，调用前一个函数计算y对应的值，
+    并使用方式输出20个计算结果。 （就是写两个函数，一个函数调用另一个函数） -->
+</body>
+<script>
+
+    // 取20个随机数，不重复
+    function random() {
+        var arr = [];
+        for (var i = 0; i < 100; i++) {
+            var result = parseInt(Math.random() * 100);
+            arr.push(result);
+        }
+        var arr1=[];
+        for (var j = 0; j < arr.length; j++) {
+            if(arr.indexOf(arr[j]==-1)){
+                arr1.push(arr[j]);
+                if(arr1.length>20){
+                    break;
+                }
+            }
+        }
+        return arr1;
+    }
+    // console.log(random());
+    // random();
+
+    //二次函数表达式的计算方法
+    function mathExpression(){
+        var arr=random();
+        // console.log(arr);  //检查随机生成数的方法，产生的随机数是否和调用时一样
+        for (var i = 0; i < arr.length; i++) {
+            var result=2*arr[i]*arr[i]+5;
+            console.log(result);  
+            // console.log(arr[i]);
+        }
+    }
+    mathExpression();
+   
+    
+</script>
+
+</html>

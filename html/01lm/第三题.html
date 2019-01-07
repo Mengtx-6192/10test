@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 3、 函数调用，建立两个函数，一个函数是中学二次函数表达式的计算方法，另一个函数是给定任意的20个x值，调用前一个函数计算y对应的值，并使用方式输出20个计算结果。 （就是写两个函数，一个函数调用另一个函数） -->
+</body>
+<script>
+    function fn(x){
+        return x*x;
+    }
+    function fn2(){
+      
+       for(var i = 1;i<=20;i++){
+           var y = fn(i);
+           console.log(y);
+       }
+        return y;
+    }
+    fn2()
+    
+    
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="showtime"></div>
+
+    <script>
+        
+       // 1、 使用循环语句和document.write，依次以h1~h6的6级标题格式在页面中输出6行“欢迎 光临”。 
+        for (let i = 1; i < 6; i++) {
+            document.write("<h"+i+">欢迎 光临<h"+i+">");
+        }
+
+        //  2、 在页面中showtime的div中显示当前时间。格式如下: 
+        // ::。每隔一秒刷新一次。       
+        var showtime = document.getElementById('showtime')
+        function time() {
+            var date = new Date();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+            showtime.innerHTML = hour + ':' + minute + ":" + second;
+        }
+        time();
+        setInterval(function () {
+          time();
+        }, 1000)
+    
+    </script>
+</body>
+</html>

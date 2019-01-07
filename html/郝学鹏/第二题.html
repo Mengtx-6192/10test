@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+
+    // 二、 根据当前日期进行以下方面的处理: 
+    // 1、 取得日期的年份、月份、天、时、分、秒，并转换成大写日期格式 
+    // 如:2013年8月17日0时30分20秒 
+
+
+
+    function getTime() {
+
+        var data = new Date('2013-8-17-00:30:20');
+
+        console.log(data)
+
+        var year = data.getFullYear();
+        var month = data.getMonth() + 1;
+        month = month < 10 ? '0' + month : month;
+
+        var date = data.getDate();
+        date = date < 10 ? '0' + date : date;
+
+        var day = data.getDay();
+
+        var hour = data.getHours();
+        hour = hour < 10 ? '0' + hour : hour;
+        console.log(hour);
+
+        var minutes = data.getMinutes();
+
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+
+        var seconds = data.getSeconds();
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        console.log(year+'年'+month+'月'+date+'日'+hour+':'+minutes+':'+seconds)
+
+        return year+'年'+month+'月'+date+'日'+hour+':'+minutes+':'+seconds
+    }
+    getTime()
+
+
+// 2、 根据日期的不同时间段，做问候语: 
+// 早上8:00-12:00 :“早上好～欢迎登陆系统” 
+// 中午12:00-14:00:“中午好～该休息了” A
+// 下午14:00-18:00:“下午好～欢迎登陆系统” 
+// 晚上19:00-00:00:“晚上好～XXXXXXXXX” 
+// 注:你若觉得分的不够细，可以将时间段划分的更细一些。
+
+    function getSay(timing){
+        if(timing<=12){
+            alert('早上好～欢迎登陆系统')
+        }
+        else if(timing<=14){
+            alert('中午好～该休息了')
+
+        }
+        else if(timing<=18){
+            alert('下午好～欢迎登陆系统')
+        }else{
+            alert('晚上好～XXXXXXXXX')
+        }
+    }
+
+    getSay(10)
+
+
+// 3、 计算当前时间向前、向后的日期，并取出是星期几。 （扩展）
+
+    
+
+
+
+</script>
+
+
+</html>

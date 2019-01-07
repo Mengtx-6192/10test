@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        一、 给定一个字符串例如:
+    “abaasdffggghhjjkkgfddsssss3444343”;问题如下: 
+    1、 字符串的字节长度 
+    2、 取出指定位置的字符，如:0,3,5,9等 
+    3、 查找指定字符是否在以上字符串中存在，如:i，c ，b等 
+    4、 替换指定的字符，如:g替换为22,ss替换为b等操作方法 
+    5、 截取指定开始位置到结束位置的字符串，如:取得1-5的字符串 
+    6、 找出以上字符串中出现次数最多的字符和出现的次数 
+    7、 遍历字符串，并将遍历出的字符两头添加符号“@”输出至当前的文档页面。
+    </pre>
+        <script>
+            
+    var str = "abaasdffggghhjjkkgfddsssss3444343";
+      
+        function getLength(str) {
+            return str.length;
+        }
+        console.log("字节长度为："+getLength(str));
+        
+    
+        function getNum(str, position) {
+            return str.charAt(position);
+        }
+        console.log("0："+getNum(str, 0), "3："+getNum(str, 3), "5："+getNum(str, 5), "："+getNum(str, 9));
+       
+    
+        function hasChars(str1, str2) {
+            var index = str1.indexOf(str2); 
+            if(index==-1){
+                return "不存在 "+str2;
+            }else{
+                return "存在 "+str2;
+            }
+        }
+        console.log(hasChars(str,"s"));
+    
+    
+         function replaceChar(str, char, targetChar) {
+                while (str.indexOf(char) !== -1) {
+                    str = str.replace(char, targetChar);
+                }
+                return str;
+            }
+        console.log(replaceChar(str, 'g', '替换位置'));
+       
+        var substr = str.substr(0, 5);
+            console.log(substr);
+            
+    
+            var obj = {}; 
+        for (var i = 0; i < str.length; i++) {
+        
+          if (!obj[str.charAt(i)]) {
+            obj[str.charAt(i)] = 1;
+          } else {
+            obj[str.charAt(i)]++;
+          }
+        }
+        // console.log(obj);
+        
+        var max = 0;
+        var maxno = '';
+        for (var k in obj) {
+          if (obj[k] > max) {
+            max = obj[k];
+            maxno = k;
+          }
+        }
+        console.log( '字符：' + maxno + " 次数："+max );
+    
+    
+     for (var i = 0; i < str.length; i++) {
+                document.write('@' + str[i] + '@');
+            }
+    
+        </script>
+    
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            div{
+                width: 100px;
+                height: 100px;
+                border: 1px solid red;
+            }
+            div:hover{
+                background-color: #CC66CC;
+            }
+            </style>
+</head>
+<body>
+        <pre oncopy="alert('不能复制');return false;">
+                第七题，
+                1、 使用onkeypress事件，在页面按下字符按键时，获取用户按下的按键编号，并在状态栏 
+                用以下格式显示: 
+                “您刚才所按下的按键为:„”。 
+                2、 在页面中禁止右键的使用，并在用户点击鼠标右键时使用alert弹出提示
+                3、 在页面中使用onselectstart禁止选择操作，并在用户进行选择时使用alert弹出提示信息: 
+                “禁止选取～”。 
+                4、 在页面中使用oncopy禁止复制操作，并在用户进行复制时使用alert弹出提示信息:“禁 
+                止选取～”。 
+                5、 对页面中txt的div按以下要求设置鼠标事件:鼠标在上时，背景颜色修改为#CC66CC， 
+                
+                    </pre>
+                    <div>
+                        鼠标在上时，背景颜色修改为#CC66CC
+                    </div>
+                </body>
+                <script>
+                document.onkeypress=function(e){
+                    alert("您刚才所按下的按键为:"+e.keyCode);
+                            console.log(e.keyCode);
+                }
+                
+                
+                 function click() 
+                  {  
+                   if(event.button==2) 
+                     { 
+                        alert('禁止使用右键') ;
+                     } else{
+                        document.body.onselectstart=document.body.ondrag=function(){
+                return alert("禁止选取");
+                }
+                     }
+                  }  
+                  document.onmousedown=click  
+                
+                 
+                </script>
+</body>
+</html>

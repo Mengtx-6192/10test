@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 150px;
+            margin: 100px auto;
+            border: 1px solid #666;
+            position: relative;
+            display: none;
+        }
+
+        .box p {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .box span {
+            position: absolute;
+            bottom: 15px;
+            width: 60px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: #666;
+            margin: auto;
+            cursor: pointer;
+            color: #fff;
+            border-radius: 6px;
+        }
+
+        .box span:nth-of-type(1) {
+            left: 30px;
+        }
+
+        .box span:nth-of-type(2) {
+            right: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <p>你确认浏览吗？</p>
+        <span id="yes">确定</span>
+        <span id="no">取消</span>
+    </div>
+    <script>
+        /*         四、
+        1、 在打开页面时弹出一个确认对话框
+        2、 显示:“你确定继续浏览吗,”。如果用户点击确定， 
+        则用alert显示信息“欢迎光临～”;若用户点击取消，
+        则用alert显示信息“欢迎再来～”并使用window.close 关闭页面 */
+        window.onload = function () {
+            var box = document.getElementById("box");
+            var yes = document.getElementById("yes")
+            var no = document.getElementById("no")
+            setTimeout(() => {
+                box.style.display = "block";
+                yes.onclick = function () {
+                    box.style.display = "none";
+                    alert("欢迎光临～");
+
+                }
+                no.onclick = function () {
+                    alert("欢迎再来～")
+                    window.close();
+                }
+            }, 1000);
+
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="./jquery-1.12.2.js"></script> -->
+    <style>
+        .box{
+        height: 200px;
+        
+    }
+    table,tr,td,th{
+        border: 1px solid #000;
+    }
+    table{
+        margin: 0 auto;
+    }
+    td,th{
+        height: 20px;
+        /* width: 80px; */
+        text-align: center;
+        padding: 0 20px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id="checkbox-all"><span>全选</span>
+                </th>
+                <th>名称</th>
+                <th>编号</th>
+                <th>分类</th>
+                <th>描述</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+<script>
+    let data = [{
+            name: '冰箱',
+            id: 'bx001',
+            catagory: '家电',
+            desc: '可以冷藏东西的东西'
+        },
+        {
+            name: '冰柜',
+            id: 'bx002',
+            catagory: '家电',
+            desc: '可以冷藏东西的东西'
+        },
+        {
+            name: '空调',
+            id: 'kt001',
+            catagory: '家电',
+            desc: '夏天必备'
+        },
+        {
+            name: '电视',
+            id: 'ds001',
+            catagory: '家电',
+            desc: '可以看小电影'
+        },
+        {
+            name: '电脑',
+            id: 'dn001',
+            catagory: '家电',
+            desc: '网上冲浪'
+        },
+        {
+            name: '卷纸',
+            id: 'jz001',
+            catagory: '生活用品',
+            desc: '卷起来的纸'
+        },
+        {
+            name: '小刀',
+            id: 'xd001',
+            catagory: '生活用品',
+            desc: '不是电动车的那个小刀'
+        },
+        {
+            name: '洗衣液',
+            id: 'xyy001',
+            catagory: '日常用品',
+            desc: '洗衣服用的，听说和香水一样哦'
+        },
+        {
+            name: '麦片',
+            id: 'mp001',
+            catagory: '食物',
+            desc: '可以吃的东东'
+        },
+        {
+            name: '82年红茶',
+            id: 'hc001',
+            catagory: '饮料',
+            desc: '听说只有帅气的人才能天天喝'
+        },
+    ];
+    var tbody = document.querySelector('tbody')
+    for (var i = 0; i < data.length; i++) {
+        var tr = document.createElement('tr');
+        tbody.appendChild(tr);
+
+        for (var j = 0; j < 5; j++) {
+            tr.innerHTML = ' <td><input type="checkbox"></td><td>' + data[i].name + '</td><td>' + data[i].id +
+                '</td><td>' + data[i].catagory + '</td><td>' + data[i].desc + '</td>'
+
+        }
+    }
+    var all = document.querySelector('#checkbox-all');
+    var inputs = tbody.querySelectorAll('input');
+
+    // console.log(inputs);
+    all.onclick = function () {
+        for (var j = 0; j < inputs.length; j++) {
+            inputs[j].checked = all.checked;
+            // var tds = tr.querySelectorAll('td')[1];
+            // console.log(tds);
+        }
+    }
+    for (var j = 0; j < inputs.length; j++) {
+
+        inputs[j].onclick = function () {
+            var flag = true;
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].checked == false) {
+                    flag = false
+                }
+            }
+            all.checked = flag;
+        }
+    }
+</script>
+
+</html>

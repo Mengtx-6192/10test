@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 1、 函数调用，建立两个函数，一个函数是中学二次函数表达式的计算方法，另一个函数是给定任意的20个x值，调用前一个函数计算y对应的值，并使用方式输出20个计算结果。 （就是写两个函数，一个函数调用另一个函数）
+2、 使用二重循环打印9×9乘法表。 -->
+</body>
+
+<script>
+
+    // 第一题
+    function numSort(arr) {
+
+        return arr.sort(function (a, b) {
+            return a - b
+        })
+    }
+
+
+    function getArray() {
+
+        var arr2 = [1, 3, 54, 6, 3, 6, 34, 7, 9, 45, 3, 4, 45, 34, 53, 2, 5, 23, 32, 654]
+
+        arr1=numSort(arr2);
+
+        console.log(arr1);
+    }
+    getArray()
+
+
+
+    // 第二题
+
+    for(var i=1; i<=9;i++){
+                var str='';
+            for(var j=1; j<=i;j++){
+
+                str +=i+'*'+j+'='+'i*j'+'\t'
+            }
+            str +='\n';
+
+            console.log(str)
+
+
+
+
+    }
+
+</script>
+
+</html>

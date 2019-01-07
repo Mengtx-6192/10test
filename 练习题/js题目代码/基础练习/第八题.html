@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #showtime {
+            width: 400px;
+            height: 200px;
+            margin: 200px auto;
+            /* background-color: lightcoral; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 8、 在页面中showtime的div中显示当前时间。格式如下:
+    ::。每隔一秒刷新一次。
+    提示:使用innerText/innerHTML。 -->
+    <div id="showtime"></div>
+</body>
+<script>
+    var showtime = document.getElementById('showtime');
+
+    setInterval(function () {
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth();
+        var d = date.getDate();
+        var h = date.getHours();
+        var m = date.getMinutes();
+        var s = date.getSeconds();
+        showtime.innerText = year + '年' + month + '月' + d + '日' + h + '时' + m + '分' + s + '秒';
+    }, 1000)
+    // console.log(year + '年' + month + '月' + d + '日' + h + '时' + m + '分' + s + '秒');
+</script>
+
+</html>

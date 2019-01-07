@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src='prefixfree.min.js'></script>
+    <style class="cp-pen-styles">
+        /* body {
+            background: radial-gradient(200% 100% at bottom center, #0070aa, #0b2570, #000035, #000);
+            background: radial-gradient(220% 105% at top center, #000 10%, #000035 40%, #0b2570 65%, #0070aa);
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+        @keyframes rotate {
+            0% {
+                transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+            }
+
+            100% {
+                transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
+            }
+        }
+        .stars {
+            transform: perspective(500px);
+            transform-style: preserve-3d;
+            position: absolute;
+            bottom: 0;
+            perspective-origin: 50% 100%;
+            left: 50%;
+            animation: rotate 90s infinite linear;
+        }
+        .star {
+            width: 2px;
+            height: 2px;
+            background: #F7F7B6;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: 0 0 -300px;
+            transform: translate3d(0, 0, -300px);
+            backface-visibility: hidden;
+        } */
+         /* .sjian{
+             height: 100px;
+             width: 220px;
+             background-color: #fff;
+         } */
+         .box{
+             height: 200px;
+             width: 200px;
+             border: 1px solid #ccc;
+             
+         }
+         #haohaio{
+             height: 50px;
+             width: 50px;
+             border: 1px solid #ccc;
+             margin-top: 200px;
+         }
+    </style>
+</head>
+
+<body>
+    <div class="stars">
+    </div>
+    <div class="sjian"></div>
+    <div id="input" class="box"></div>
+    <input type="button" value="点击" id="input-1">
+    <input type="button" value="点击" id="input-2">
+    <div id="haohaio"></div>
+    <script src='stopExecutionOnTimeout.js'></script>
+    <script>
+        $(document).ready(function () {
+            var stars = 800;
+            var $stars = $('.stars');
+            var r = 800;
+            for (var i = 0; i < stars; i++) {
+                if (window.CP.shouldStopExecution(1)) {
+                    break;
+                }
+                var $star = $('<div/>').addClass('star');
+                $stars.append($star);
+            }
+            window.CP.exitedLoop(1);
+            $('.star').each(function () {
+                var cur = $(this);
+                var s = 0.2 + Math.random() * 1;
+                var curR = r + Math.random() * 300;
+                cur.css({
+                    transformOrigin: '0 0 ' + curR + 'px',
+                    transform: ' translate3d(0,0,-' + curR + 'px) rotateY(' + Math.random() *
+                        360 + 'deg) rotateX(' + Math.random() * -50 + 'deg) scale(' + s + ',' +
+                        s + ')'
+                });
+            });
+        });
+        //1字符串的字节长度
+        var arr = "abaasdffggghhjjkkgfddsssss3444343";
+        console.log(arr.length)
+        //2取出指定位置的字符，如:0,3,5,9等 
+        console.log(arr.substring(26, 27)) //substring字符串截取
+        //3查找指定字符是否在以上字符串中存在，如:i，c ，b等 
+        console.log(arr.indexOf("i") != -1) //indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置
+        console.log(arr.indexOf("c") != -1)
+        console.log(arr.indexOf("b") != -1)
+        //4替换指定的字符，如:g替换为22,ss替换为b等操作方法 
+        console.log(arr.replace("g", "22")) //replace 替换字符串
+        console.log(arr.replace("ss", "b"))
+        //5截取指定开始位置到结束位置的字符串，如:取得1-5的字符串 
+        console.log(arr.substring(26, 31))
+        //6找出以上字符串中出现次数最多的字符和出现的次数
+        var arrWer = function () {
+            var arrQie = arr.split("") // split切割
+            var arrNew = [] //定义一个数组
+            for (var i = 0; i < arrQie.length; i++) {
+                if (arrNew[arrQie[i]]) {
+                    arrNew[arrQie[i]] += 1
+                } else {
+                    arrNew[arrQie[i]] = 1
+                }
+            }
+            //定义字符出现的数量
+            var num = 0;
+            var number = "";
+            for (var k in arrNew) {
+                if (arrNew[k] > num) {
+                    num = arrNew[k];
+                    number = k
+                }
+            }
+            console.log("出现次数:" + num, "最多的字符:" + number)
+        }
+        arrWer();
+        //7 遍历字符串，并将遍历出的字符两头添加符号“@”输出至当前的文档页面
+        for (var i = 0; i < arr.length; i++) {
+             //charAt() 方法可返回指定位置的字符。
+            console.log(arr.charAt(i))
+        }
+        //  二、 根据当前日期进行以下方面的处理: 
+        //1、 取得日期的年份、月份、天、时、分、秒，并转换成大写日期格式
+        //  2013年8月17日0时30分20秒
+
+
+        // var index = date.toLocaleString();
+
+        var date = new Date();
+        date.getYear(); //获取当前年份(2位)
+        date.getFullYear(); //获取完整的年份(4位)
+        date.getMonth(); //获取当前月份(0-11,0代表1月)
+        date.getDate(); //获取当前日(1-31)
+        date.getDay(); //获取当前星期X(0-6,0代表星期天)
+        date.getTime(); //获取当前时间(从1970.1.1开始的毫秒数)
+        date.getHours(); //获取当前小时数(0-23)
+        date.getMinutes(); //获取当前分钟数(0-59)
+        date.getSeconds(); //获取当前秒数(0-59)
+        date.getMilliseconds(); //获取当前毫秒数(0-999)
+        date.toLocaleDateString(); //获取当前日期
+        var mytime = date.toLocaleTimeString(); //获取当前时间
+        date.toLocaleString(); //获取日期与时间
+        document.write(date.toLocaleString())
+        // document.write("date.toLocaleString()")
+        // 2、 根据日期的不同时间段， 做问候语:
+        //     早上8: 00 - 12: 00: “早上好～ 欢迎登陆系统”
+        // 中午12: 00 - 14: 00: “中午好～ 该休息了”
+        // 下午14: 00 - 18: 00: “下午好～ 欢迎登陆系统”
+        // 晚上19: 00 - 00: 00: “晚上好～ XXXXXXXXX”
+        var hour = date.getHours();
+        if (hour > 8 && hour <= 12) {
+            alert("早上好～ 欢迎登陆系统");
+        } else if (hour > 12 && hour <= 14) {
+            alert("中午好～ 该休息了")
+        } else if (hour > 14 && hour <= 18) {
+            alert("下午好～ 欢迎登陆系统")
+        } else if (hour > 19 && hour <= 00) {
+            alert("晚上好～ 去睡觉吧")
+        }
+        //         11、 在页面中使用onselectstart禁止选择操作，并在用户进行选择时使用alert弹出提示信息: 
+        // “禁止选取～”。 
+        // 12、 在页面中使用oncopy禁止复制操作，并在用户进行复制时使用alert弹出提示信息:“禁 
+        // 止选取～”。 
+        // 13、 对页面中txt的div按以下要求设置鼠标事件:鼠标在上时，背景颜色修改为#CC66CC，  
+        $(function () {
+            $("#input").mouseover(function () {
+                $("body").css("backgroundColor", "#CC66CC")
+            })
+        })
+        // 14、页面上有一个按钮，点击能弹出一个对话框询问“请问你是女孩吗,”;如果选择确定，则显示“太好了～”，否则显示“没劲” 
+        $(function () {
+            $("#input-1").click(function () {
+                var a = prompt("", "请问你是女孩吗");
+                if (a) {
+                    alert("太好啦")
+                } else {
+                    alert("不好意思")
+                }
+            })
+        })
+        // 15、页面上有一个按钮，点击后能让网页的背景不停变色 
+        var haohaio = document.querySelector("#haohaio");
+        haohaio.onclick = function () {
+            setInterval(function () {
+                var num1 = parseInt(Math.random() * 255);
+                var num2 = parseInt(Math.random() * 255);
+                var num3 = parseInt(Math.random() * 255);
+                document.body.style.backgroundColor = "rgb(" + num1 + "," + num2 + "," + num3 + ")";
+            }, 1000);
+        }
+
+        // 16、页面上有一个按钮及文本框，在文本框中输入邮箱后，点击按钮能进行验证，要求不能为空，且必须包含@和. 
+        // 17、页面上有一个按钮，点击后能在文本框内显示出当前系统时间，如下图所示 
+        // 3、 计算当前时间向前、向后的日期，并取出是星期几。 （扩展）
+        // 3、 函数调用，建立两个函数，一个函数是中学二次函数表达式的计算方法，另一个函数是给定任意的20个x值，调用前一个函数计算y对应的值，并使用方式输出20个计算结果。 （就是写两个函数，一个函数调用另一个函数）
+        // 4、 使用二重循环打印9×9乘法表。 
+        var arr = "";
+        for (var i = 1; i <= 9; i++) {
+            for (var j = 1; j <= i; j++) {
+                arr += j + '×' + i + '=' + i * j + '\t'
+            }
+            arr = arr + '\n';
+        }
+        console.log(arr)
+        // 5、 使用JavaScript中变量定义省份及对应的城市，应用Select标签对象，实现二级级联的 
+        // 下拉菜单选中效果。也就是说，在省份下拉菜单中，选中一个省份时，在城市下拉菜单中出现对应城市选择内容。
+        // 6、 在打开页面时弹出一个确认对话框显示:“你确定继续浏览吗,”。如果用户点击确定，
+        var result = prompt("“你确定继续浏览吗?", true)
+        if (result) {
+            alert("欢迎光临")
+        } else {
+            alert("欢迎再来")
+            window.close();
+        }
+        // 则用alert显示信息“欢迎光临～”;若用户点击取消，则用alert显示信息“欢迎再来～”并使用window.close 关闭页面
+        // 7、 使用循环语句和document.write，依次以h1~h6的6级标题格式在页面中输出6行“欢迎 光临”。 
+
+        // 8、 在页面中showtime的div中显示当前时间。格式如下: 
+        // ::。每隔一秒刷新一次。 
+        // 提示:使用innerText/innerHTML
+    </script>
+</body>
+
+</html>

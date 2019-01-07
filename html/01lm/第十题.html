@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+     <p>在页面中禁止右键的使用，并在用户点击鼠标右键时使用alert弹出提示
+            在页面中使用onselectstart禁止选择操作，并在用户进行选择时使用alert弹出提示信息: 
+           “禁止选取～”。 
+            在页面中使用oncopy禁止复制操作，并在用户进行复制时使用alert弹出提示信息:“禁止复制～”。</p> 
+</body>
+<script>
+    window.oncontextmenu = function () {
+        alert('禁止右键');
+        return false;
+    };
+    var p =document.querySelector('p');
+    p.oncopy=function(){
+        alert('禁止复制');
+        return false;
+    }
+    p.onselectstart=function(){
+        alert('禁止选取');
+        return false;
+    }
+    p.onmouseover=function(){
+        document.body.style.backgroundColor = '#CC66CC'
+    }
+    p.onmouseout=function(){
+        document.body.style.backgroundColor = ''
+    }
+    
+</script>
+
+</html>

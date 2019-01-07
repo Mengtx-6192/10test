@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>作业</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            padding-left: 10px;
+        }
+
+        .showtime {
+            width: 450px;
+            height: 150px;
+            line-height: 150px;
+            text-align: center;
+            font-size: 100px;
+            color: #FFF;
+            border: 1px solid yellowgreen;
+            background-color: yellow;
+        }
+
+        .div_four{
+            overflow: hidden;
+        }
+
+        #txt,
+        #select,
+        #copy,
+        #unable {
+            width: 200px;
+            height: 200px;
+            color: #FFF;
+            float: left;
+        }
+        #txt {
+            line-height: 200px;
+            background-color: skyblue;
+        }
+        #select {
+            padding-top: 80px;
+            box-sizing: border-box;
+            background-color: pink;
+        }
+        
+        #copy {
+            padding-top: 80px;
+            box-sizing: border-box;
+            background-color: purple;
+        }
+        #unable {
+            line-height: 200px;
+            background-color: powderblue;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // js练习题编程一
+        var str_test1 = "abaasdffggghhjjkkgfddsssss3444343";
+        // 1、 字符串的字节长度
+        console.log(str_test1.length);
+        // 2、 取出指定位置的字符，如:0,3,5,9等
+        console.log(str_test1.charAt(0));
+        console.log(str_test1.charAt(3));
+        console.log(str_test1.charAt(5));
+        console.log(str_test1.charAt(9));
+        // 3、 查找指定字符是否在以上字符串中存在，如:i，c ，b等
+        if (str_test1.indexOf("i") === -1) {
+            console.log("字符i在以上字符串中不存在");
+        } else {
+            console.log("字符i在以上字符串中存在");
+        }
+        if (str_test1.indexOf("c") === -1) {
+            console.log("字符c在以上字符串中不存在");
+        } else {
+            console.log("字符c在以上字符串中存在");
+        }
+        if (str_test1.indexOf("b") === -1) {
+            console.log("字符b在以上字符串中不存在");
+        } else {
+            console.log("字符b在以上字符串中存在");
+        }
+        // 4、 替换指定的字符，如:g替换为22,ss替换为b等操作方法 
+        console.log("替换前字符串：" + str_test1);
+        while (str_test1.indexOf("g") !== -1) {
+            str_test1 = str_test1.replace("g", "22");
+        }
+        console.log("替换后字符串1：" + str_test1);
+        while (str_test1.indexOf("ss") !== -1) {
+            str_test1 = str_test1.replace("ss", "b");
+        }
+        console.log("替换后字符串2：" + str_test1);
+        // 5、 截取指定开始位置到结束位置的字符串，如:取得1-5的字符串 
+        // 5.1、slice(start,end):截取开始到结束，结束取不到
+        // console.log(str_test1.slice(1,6));
+        // 5.2、substring(start,end):截取开始到结束，结束取不到，不能有负值
+        // console.log(str_test1.substring(1,6));
+        // 5/3、substr(start,length):截取从开始位置指定长度的字符串(最常用)
+        console.log("截取索引1-5的字符串：" + str_test1.substr(1, 5));
+        // 6、 找出以上字符串中出现次数最多的字符和出现的次数 
+        var obj_test1 = {}; // 定义一个对象记录出现的字符及其次数
+        for (var i = 0, len = str_test1.length; i < len; i++) {
+            var char = str_test1.charAt(i); // 取得当前索引的字符
+            if (obj_test1[char]) { // char可以视为 obj_obj_test1 的一个属性，
+                obj_test1[char]++; // obj_obj_test1[char]就是它的属性值，
+            } else {
+                obj_test1[char] = 1;
+            }
+        }
+        var numMax = 0;
+        var charMax = 0;
+        for (var key in obj_test1) {
+            if (numMax < obj_test1[key]) {
+                numMax = obj_test1[key];
+                charMax = key;
+            }
+        }
+        console.log("当前字符串是：" + str_test1);
+        console.log("出现次数最多的字符是：" + charMax + "，出现次数是：" + numMax + "。");
+        // 7、 遍历字符串，并将遍历出的字符两头添加符号“@”输出至当前的文档页
+        // var newStr = "";
+        // for (var i = 0, len = str_test1.length; i < len; i++) {
+        //     newStr += "@" + str_test1.charAt(i) + "@";
+        // }
+        // document.write(newStr); // 拼接字符串耗费性能
+        var newArr1 = str_test1.split("");
+        var newArr2 = [];
+        for (var i = 0, len = newArr1.length; i < len; i++) {
+            newArr2.push("@" + newArr1[i] + "@");
+        }
+        document.write(newArr2.join(""));
+        document.write("<br />");
+    </script>
+    <script>
+        // 1、 取得日期的年份、月份、天、时、分、秒，并转换成大写日期格式 如:2013年8月17日0时30分20秒
+        var date = new Date();
+        var arrWeek = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", ];
+        var week = (date.getDay());
+        console.log("现在时间是: " + (date.getFullYear()) + "年" + (date.getMonth() + 1) + "月" + (date.getDate()) +
+            "日" + (date.getHours()) + "时" + (date.getMinutes()) + "分" + (date.getSeconds()) + "秒 " +
+            arrWeek[week]);
+        // 2、 根据日期的不同时间段，做问候语:
+        // 早上8:00-12:00 :“早上好～欢迎登陆系统”
+        // 中午12:00-14:00:“中午好～该休息了”
+        // 下午14:00-18:00:“下午好～欢迎登陆系统”
+        // 晚上19:00-00:00:“晚上好～XXXXXXXXX”
+        // 注:你若觉得分的不够细，可以将时间段划分的更细一些。
+        if (date.getHours() >= 8 && date.getHours() < 12) {
+            document.write("早上好～欢迎登陆系统<br />");
+            console.log("早上好～欢迎登陆系统");
+        } else if (date.getHours() >= 12 && date.getHours() < 14) {
+            document.write("中午好～该午休了<br />");
+            console.log("中午好～该午休了");
+        } else if (date.getHours() >= 14 && date.getHours() < 18) {
+            document.write("下午好～欢迎登陆系统<br />");
+            console.log("下午好～欢迎登陆系统");
+        } else if (date.getHours() >= 18 && date.getHours() < 24) {
+            document.write("晚上好～要早点休息哦<br />");
+            console.log("晚上好～要早点休息哦");
+        } else if (date.getHours() >= 0 && date.getHours() < 6) {
+            document.write("深夜好～不要熬夜，快点休息<br />");
+            console.log("深夜好～不要熬夜，快点休息");
+        } else {
+            document.write("凌晨好～起的真早<br />");
+            console.log("凌晨好～起的真早");
+        }
+        // 3、 计算当前时间向前、向后的日期，并取出是星期几。（扩展）
+    </script>
+    <script>
+        // 函数调用， 建立两个函数， 一个函数是中学二次函数表达式的计算方法， 另一个函数是给定任意的20个x值， 调用前一个函数计算y对应的值， 并使用方式输出20个计算结果。
+    function erci(x) {
+        return 2 * Math.pow(x, 2) + 3 * x + 5;
+    }
+
+    function getNum() {
+        var numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 0];
+        for (var i = 0; i < numArr.length; i++) {
+            var y = erci(numArr[i]);
+            console.log('(' + numArr[i] + ',' + y + ')');
+        }
+    }
+    getNum();
+    </script>
+    <script>
+        // 使用二重循环打印9× 9 乘法表
+    var str = '';
+    for (var i = 1; i <= 9; i++) {
+        for (var j = 1; j <= i; j++) {
+            str += j + '×' + i + '=' + i * j + '\t';
+        }
+        str = str + '\n';
+    }
+    console.log(str);
+    </script><br />
+    <select name="" id="province">
+        <option value="0">请选择省份</option>
+        <option value="1">安徽</option>
+        <option value="2">江苏</option>
+        <option value="3">浙江</option>
+    </select>
+    <select name="" id="city">
+        <option value="">请选择城市</option>
+    </select><br>
+    <script>
+        var province = document.getElementById('province');
+        var city = document.getElementById('city');
+        var provinceList = [];
+        provinceList[0]=['请选择城市'];
+        provinceList[1]=['合肥','六安','安庆','阜阳'];
+        provinceList[2]=['南京','无锡','泰州','苏州'];
+        provinceList[3]=['杭州','京华','深圳','温州'];
+        province.onchange = function() {
+            city.innerText = '';
+            for (var i = 0; i < provinceList[this.value].length; i++) {
+                    var option = document.createElement('option');
+                    option.innerText = provinceList[this.value][i];
+                    city.appendChild(option);
+                }
+        };
+    </script>
+    <script>
+        //  在打开页面时弹出一个确认对话框显示: “你确定继续浏览吗, ”。如果用户点击确定，
+        // 则用alert显示信息“欢迎光临～”; 若用户点击取消，则用alert显示信息“欢迎再来～”并使用window.close 关闭页面
+        // var flag = confirm('你确定继续浏览么？');
+        // if (flag) {
+        // alert('欢迎光临～');
+        // } else {
+        // alert('欢迎再来～');
+        // window.close();
+        // }
+    </script>
+    <script>
+        // 使用循环语句和document.write， 依次以h1~h6的6级标题格式在页面中输出6行“ 欢迎 光临”
+        for (var i = 1; i <= 6; i++) {
+            document.write('<h' + i + '>欢迎 光临</h' + i + '>');
+        }
+    </script>
+    <div class="showtime" id="showTime">123</div>
+    <script>
+        //在页面中showtime的div中显示当前时间。格式如下: 每隔一秒刷新一次。
+        setInterval(timeDiv, 1000)
+        timeDiv();
+        function timeDiv() {
+            var time = new Date();
+            var hour = String(time.getHours()).padStart(2, '0');
+            var minutes = String(time.getMinutes()).padStart(2, '0');
+            var second = String(time.getSeconds()).padStart(2, '0');
+            var time = hour + ':' + minutes + ':' + second;
+            document.getElementById('showTime').innerText = time;
+        }
+    </script>
+    <script>
+        //使用onkeypress事件，在页面按下字符按键时，获取用户按下的按键编号，并在状态栏 
+        // 用以下格式显示:
+        // “您刚才所按下的按键为: „”
+        document.onkeypress = function(e) {
+            console.log('您刚才所按下的按键为:' + e.keyCode);
+        }
+    </script>
+    <div class="div_four">
+        <div id="unable">在页面中禁止右键的使用</div>
+        <div id="select">在页面中使用onselectstart禁止选择操作</div>
+        <div id="copy">在页面中使用oncopy禁止复制操作</div>
+        <div id="txt">鼠标在上时，背景颜色修改为#CC66CC</div>
+    </div>
+    <script>
+        document.getElementById('unable').oncontextmenu = function(e) {
+            alert('禁用右键')
+            e.preventDefault();
+        }
+    </script>
+    <script>
+        //在页面中使用onselectstart禁止选择操作，并在用户进行选择时使用alert弹出提示信息:  “禁止选取～”
+        document.getElementById('select').onselectstart = function() {
+            alert('禁止选取～');
+        }
+    </script>
+    <script>
+        // 在页面中使用oncopy禁止复制操作，并在用户进行复制时使用alert弹出提示信息: “禁止选取～”
+        document.getElementById('copy').oncopy = function() {
+            alert('禁止复制～');
+        }
+    </script>
+    <script>
+        var bg = null;
+        // 对页面中txt的div按以下要求设置鼠标事件: 鼠标在上时，背景颜色修改为#CC66CC
+        document.getElementById('txt').onmouseenter = function() {
+            bg = this.style.backgroundColor;
+            this.style.backgroundColor = "#CC66CC";
+        }
+        document.getElementById('txt').onmouseleave = function() {
+            this.style.backgroundColor = bg;
+        }
+    </script>
+    <input type="button" value="确认性别按钮" id="btn_gile"><br />
+    <script>
+        // 页面上有一个按钮，点击能弹出一个对话框询问“请问你是女孩吗,  如果选择确定，则显示“太好了～”，否则显示“没劲”
+        document.getElementById('btn_gile').onclick = function() {
+            var flag = confirm('请问你是女孩吗');
+            if (flag) {
+                alert('太好了~');
+            } else {
+                alert('没劲');
+            }
+        }
+    </script>
+    <input type="button" value="变色按钮" id="btn_color"><br />
+    <script>
+        //页面上有一个按钮，点击后能让网页的背景不停变色
+        //随机色
+        function randomColor() {
+            var r = Math.floor(Math.random() * 256);
+            var g = Math.floor(Math.random() * 256);
+            var b = Math.floor(Math.random() * 256);
+            var color = 'rgb(' + r + ',' + g + ',' + b + ')';
+            return color;
+        }
+        var flag_color = true;
+        var timeId_color = null;
+        document.getElementById('btn_color').onclick = function() {
+            if (flag_color) {
+                timeId_color = setInterval(function() {
+                    document.body.style.backgroundColor = randomColor();
+                }, 1000);
+                flag_color = false;
+            } else {
+                clearInterval(timeId_color);
+                flag_color = true;
+            }
+        }
+    </script>
+    <input type="button" value="邮箱验证" id="btn_email">
+    <input type="email" name="" id="email"><span></span><br />
+    <script>
+        // 页面上有一个按钮及文本框， 在文本框中输入邮箱后， 点击按钮能进行验证， 要求不能为空， 且必须包含 @和.
+        document.getElementById('btn_email').onclick = function() {
+            var email = document.getElementById('email');
+            var reg = /\S+@\S+\./;
+            // var reg = /^\w+@\w+(\.\w+)+$/;
+            if (reg.test(email.value)) {
+                email.nextSibling.innerText = '成功';
+            } else {
+                email.nextSibling.innerText = '失败';
+            }
+        }
+    </script>
+    <input type="button" value="系统时间" id="btn_time">
+    <input type="text" id="input_time" style="width:500px"><br />
+    <script>
+        // 页面上有一个按钮， 点击后能在文本框内显示出当前系统时间
+        document.getElementById('btn_time').onclick = function () {
+            document.getElementById('input_time').value = new Date();
+        }
+    </script>
+</body>
+
+</html>
